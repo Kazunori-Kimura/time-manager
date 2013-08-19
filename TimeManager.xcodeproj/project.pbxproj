@@ -18,6 +18,17 @@
 		0BA0684017B7B48B00F9CBE3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0683F17B7B48B00F9CBE3 /* Default-568h@2x.png */; };
 		0BA0684317B7B48B00F9CBE3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0684117B7B48B00F9CBE3 /* MainStoryboard.storyboard */; };
 		0BA0684617B7B48B00F9CBE3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0684517B7B48B00F9CBE3 /* ViewController.m */; };
+		0BA0685017B7B54100F9CBE3 /* button1-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0684C17B7B54100F9CBE3 /* button1-1.png */; };
+		0BA0685117B7B54100F9CBE3 /* button1-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0684D17B7B54100F9CBE3 /* button1-2.png */; };
+		0BA0685217B7B54100F9CBE3 /* button2-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0684E17B7B54100F9CBE3 /* button2-1.png */; };
+		0BA0685317B7B54100F9CBE3 /* button2-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0684F17B7B54100F9CBE3 /* button2-2.png */; };
+		0BF0319E17C24DCE005CF446 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0319D17C24DCE005CF446 /* DatePickerViewController.m */; };
+		0BF031A017C251C2005CF446 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF0319F17C251C2005CF446 /* CoreData.framework */; };
+		0BF031A317C251DC005CF446 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031A117C251DC005CF446 /* Model.xcdatamodeld */; };
+		0BF031A617C2535E005CF446 /* DailyReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031A517C2535E005CF446 /* DailyReport.m */; };
+		0BF031A917C2535F005CF446 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031A817C2535F005CF446 /* Project.m */; };
+		0BF031AC17C2535F005CF446 /* Report.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031AB17C2535F005CF446 /* Report.m */; };
+		0BF031AF17C253AB005CF446 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031AE17C253AB005CF446 /* DataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +48,22 @@
 		0BA0684217B7B48B00F9CBE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		0BA0684417B7B48B00F9CBE3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0BA0684517B7B48B00F9CBE3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0BA0684C17B7B54100F9CBE3 /* button1-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button1-1.png"; sourceTree = "<group>"; };
+		0BA0684D17B7B54100F9CBE3 /* button1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button1-2.png"; sourceTree = "<group>"; };
+		0BA0684E17B7B54100F9CBE3 /* button2-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button2-1.png"; sourceTree = "<group>"; };
+		0BA0684F17B7B54100F9CBE3 /* button2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button2-2.png"; sourceTree = "<group>"; };
+		0BF0319C17C24DCE005CF446 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		0BF0319D17C24DCE005CF446 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		0BF0319F17C251C2005CF446 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0BF031A217C251DC005CF446 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		0BF031A417C2535E005CF446 /* DailyReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyReport.h; sourceTree = "<group>"; };
+		0BF031A517C2535E005CF446 /* DailyReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyReport.m; sourceTree = "<group>"; };
+		0BF031A717C2535F005CF446 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		0BF031A817C2535F005CF446 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		0BF031AA17C2535F005CF446 /* Report.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Report.h; sourceTree = "<group>"; };
+		0BF031AB17C2535F005CF446 /* Report.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Report.m; sourceTree = "<group>"; };
+		0BF031AD17C253AB005CF446 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		0BF031AE17C253AB005CF446 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF031A017C251C2005CF446 /* CoreData.framework in Frameworks */,
 				0BA0682A17B7B48B00F9CBE3 /* UIKit.framework in Frameworks */,
 				0BA0682C17B7B48B00F9CBE3 /* Foundation.framework in Frameworks */,
 				0BA0682E17B7B48B00F9CBE3 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +101,7 @@
 		0BA0682817B7B48B00F9CBE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BF0319F17C251C2005CF446 /* CoreData.framework */,
 				0BA0682917B7B48B00F9CBE3 /* UIKit.framework */,
 				0BA0682B17B7B48B00F9CBE3 /* Foundation.framework */,
 				0BA0682D17B7B48B00F9CBE3 /* CoreGraphics.framework */,
@@ -83,9 +112,20 @@
 		0BA0682F17B7B48B00F9CBE3 /* TimeManager */ = {
 			isa = PBXGroup;
 			children = (
+				0BF031A117C251DC005CF446 /* Model.xcdatamodeld */,
+				0BF031AA17C2535F005CF446 /* Report.h */,
+				0BF031AB17C2535F005CF446 /* Report.m */,
+				0BF031A717C2535F005CF446 /* Project.h */,
+				0BF031A817C2535F005CF446 /* Project.m */,
+				0BF031A417C2535E005CF446 /* DailyReport.h */,
+				0BF031AD17C253AB005CF446 /* DataManager.h */,
+				0BF031AE17C253AB005CF446 /* DataManager.m */,
+				0BF031A517C2535E005CF446 /* DailyReport.m */,
 				0BA0683817B7B48B00F9CBE3 /* AppDelegate.h */,
 				0BA0683917B7B48B00F9CBE3 /* AppDelegate.m */,
 				0BA0684117B7B48B00F9CBE3 /* MainStoryboard.storyboard */,
+				0BF0319C17C24DCE005CF446 /* DatePickerViewController.h */,
+				0BF0319D17C24DCE005CF446 /* DatePickerViewController.m */,
 				0BA0684417B7B48B00F9CBE3 /* ViewController.h */,
 				0BA0684517B7B48B00F9CBE3 /* ViewController.m */,
 				0BA0683017B7B48B00F9CBE3 /* Supporting Files */,
@@ -96,6 +136,10 @@
 		0BA0683017B7B48B00F9CBE3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0BA0684C17B7B54100F9CBE3 /* button1-1.png */,
+				0BA0684D17B7B54100F9CBE3 /* button1-2.png */,
+				0BA0684E17B7B54100F9CBE3 /* button2-1.png */,
+				0BA0684F17B7B54100F9CBE3 /* button2-2.png */,
 				0BA0683117B7B48B00F9CBE3 /* TimeManager-Info.plist */,
 				0BA0683217B7B48B00F9CBE3 /* InfoPlist.strings */,
 				0BA0683517B7B48B00F9CBE3 /* main.m */,
@@ -163,6 +207,10 @@
 				0BA0683E17B7B48B00F9CBE3 /* Default@2x.png in Resources */,
 				0BA0684017B7B48B00F9CBE3 /* Default-568h@2x.png in Resources */,
 				0BA0684317B7B48B00F9CBE3 /* MainStoryboard.storyboard in Resources */,
+				0BA0685017B7B54100F9CBE3 /* button1-1.png in Resources */,
+				0BA0685117B7B54100F9CBE3 /* button1-2.png in Resources */,
+				0BA0685217B7B54100F9CBE3 /* button2-1.png in Resources */,
+				0BA0685317B7B54100F9CBE3 /* button2-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +224,12 @@
 				0BA0683617B7B48B00F9CBE3 /* main.m in Sources */,
 				0BA0683A17B7B48B00F9CBE3 /* AppDelegate.m in Sources */,
 				0BA0684617B7B48B00F9CBE3 /* ViewController.m in Sources */,
+				0BF0319E17C24DCE005CF446 /* DatePickerViewController.m in Sources */,
+				0BF031A317C251DC005CF446 /* Model.xcdatamodeld in Sources */,
+				0BF031A617C2535E005CF446 /* DailyReport.m in Sources */,
+				0BF031A917C2535F005CF446 /* Project.m in Sources */,
+				0BF031AC17C2535F005CF446 /* Report.m in Sources */,
+				0BF031AF17C253AB005CF446 /* DataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,8 +352,23 @@
 				0BA0684B17B7B48B00F9CBE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0BF031A117C251DC005CF446 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0BF031A217C251DC005CF446 /* Model.xcdatamodel */,
+			);
+			currentVersion = 0BF031A217C251DC005CF446 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0BA0681E17B7B48B00F9CBE3 /* Project object */;
 }
