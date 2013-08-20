@@ -44,6 +44,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapArrive:" destination="Cy9-ui-F4K" eventType="touchUpInside" id="JTg-IB-YQW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOv-ZT-jAb">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -54,6 +57,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapLeave:" destination="Cy9-ui-F4K" eventType="touchUpInside" id="rKh-Pu-KMq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2013/08/11 (日)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpC-gd-UZi">
                                 <constraints>
@@ -74,7 +80,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="SJ7-oR-ePr" kind="push" id="WjL-fY-3u1"/>
+                                    <segue destination="SJ7-oR-ePr" kind="push" identifier="mainToDetailViewSeque" id="WjL-fY-3u1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="--:--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKb-wy-umk">
@@ -133,6 +139,13 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="勤怠入力" id="GeF-mW-Ffu"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="buttonArrive" destination="Hag-cq-6KX" id="xQ8-a7-sc5"/>
+                        <outlet property="buttonLeave" destination="JOv-ZT-jAb" id="7cI-13-oUZ"/>
+                        <outlet property="labelEndTime" destination="HiU-XL-7cK" id="bFX-a6-uxW"/>
+                        <outlet property="labelStartTime" destination="CKb-wy-umk" id="chU-uS-Mge"/>
+                        <outlet property="labelToday" destination="rpC-gd-UZi" id="H3Q-ik-kgo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oM-b0-QDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="8Gx-lj-hgQ"/>
@@ -365,7 +378,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem systemItem="cancel" id="t5U-R4-Olo"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="x1N-4u-73A"/>
                         <barButtonItem systemItem="save" id="gII-fE-ipA"/>
                     </toolbarItems>
@@ -376,10 +388,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="603" y="1089"/>
         </scene>
-        <!--Table View Controller - 週間表示-->
+        <!--Weekly View Controller - 週間表示-->
         <scene sceneID="KHw-uJ-QfF">
             <objects>
-                <tableViewController id="tBg-qD-67n" sceneMemberID="viewController">
+                <tableViewController id="tBg-qD-67n" customClass="WeeklyViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ac7-R5-gFM">
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -392,7 +404,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DD(W)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQK-uN-BUw">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="DD(W)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQK-uN-BUw">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="KfA-Lf-Crm"/>
                                                 <constraint firstAttribute="height" constant="30" id="hcl-ff-eHC"/>
@@ -401,7 +413,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="HH:MM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnm-iS-6Oc">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="HH:MM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnm-iS-6Oc">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="52" id="g0c-O7-TJB"/>
                                                 <constraint firstAttribute="height" constant="21" id="zFF-F2-WEf"/>
@@ -410,7 +422,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="HH:MM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLc-N6-oj1">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="HH:MM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLc-N6-oj1">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="52" id="pkr-c4-J9T"/>
                                             </constraints>
@@ -418,7 +430,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgT-7L-JOZ">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgT-7L-JOZ">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="42" id="rv7-dh-9un"/>
                                             </constraints>
@@ -426,7 +438,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="yyyy/mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqP-cx-1Zt">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="yyyy/mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqP-cx-1Zt">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="70" id="TbJ-L5-4Mh"/>
                                                 <constraint firstAttribute="height" constant="20" id="irE-70-CiH"/>
@@ -435,7 +447,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ql-Av-H0m">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="left" text="comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ql-Av-H0m">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="dUH-bL-359"/>
                                             </constraints>
@@ -464,7 +476,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="5ql-Av-H0m" firstAttribute="leading" secondItem="Xnm-iS-6Oc" secondAttribute="leading" type="default" id="vi9-Vt-ez2"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="SJ7-oR-ePr" kind="push" id="LsG-Sb-v2I"/>
+                                    <segue destination="SJ7-oR-ePr" kind="push" identifier="weeklyToDetailViewSegue" id="LsG-Sb-v2I"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -474,9 +486,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="&lt; Prev" style="plain" id="J6P-tP-ofc"/>
+                        <barButtonItem title="&lt; Prev" style="plain" id="J6P-tP-ofc">
+                            <connections>
+                                <action selector="tapPrev:" destination="tBg-qD-67n" id="YRs-Dr-9OR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="9ZY-QU-1xt"/>
-                        <barButtonItem title="Next >" style="plain" id="5OO-v0-dVB"/>
+                        <barButtonItem title="Next >" style="plain" id="5OO-v0-dVB">
+                            <connections>
+                                <action selector="tapNext:" destination="tBg-qD-67n" id="bCw-qq-HRN"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="週間表示" id="zdo-Ec-ThB"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -485,10 +505,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="603" y="-553"/>
         </scene>
-        <!--Table View Controller - 勤怠修正-->
+        <!--Daily Detail View Controller - 勤怠修正-->
         <scene sceneID="PSg-GC-4dm">
             <objects>
-                <tableViewController id="SJ7-oR-ePr" sceneMemberID="viewController">
+                <tableViewController id="SJ7-oR-ePr" customClass="DailyDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="KGx-Ln-Yua">
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -496,14 +516,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <sections>
                             <tableViewSection id="HhH-0S-hD2">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zxB-fo-DZ0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellDate" id="zxB-fo-DZ0">
                                         <rect key="frame" x="0.0" y="10" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="yyyy/mm/dd (w)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnU-M9-xaD">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="yyyy/mm/dd (w)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnU-M9-xaD">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="Bxi-ts-WDX"/>
                                                         <constraint firstAttribute="height" constant="22" id="QTT-la-IEO"/>
@@ -524,7 +544,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </tableViewSection>
                             <tableViewSection id="6Ix-Cc-Md2">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3Br-Bj-EBS">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellStartTime" id="3Br-Bj-EBS">
                                         <rect key="frame" x="0.0" y="76" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -556,7 +576,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraint firstItem="sf1-fY-0W2" firstAttribute="centerY" secondItem="3Br-Bj-EBS" secondAttribute="centerY" type="default" id="t3X-Ix-ajH"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Sg2-wM-JD7">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellEndTime" id="Sg2-wM-JD7">
                                         <rect key="frame" x="0.0" y="121" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -588,7 +608,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraint firstItem="3Qk-Hi-ALB" firstAttribute="leading" secondItem="Sg2-wM-JD7" secondAttribute="leading" constant="30" id="jkd-He-fos"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="MgA-0w-svt">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellRestTime" id="MgA-0w-svt">
                                         <rect key="frame" x="0.0" y="165" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -620,14 +640,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraint firstItem="duu-1P-kVm" firstAttribute="top" secondItem="MgA-0w-svt" secondAttribute="top" constant="8" id="xvc-Id-D31"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="ftq-7g-pzW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellDetail" id="ftq-7g-pzW">
                                         <rect key="frame" x="0.0" y="209" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="備考" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caQ-Oj-LQX">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caQ-Oj-LQX">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="hJa-hf-f6X"/>
                                                     </constraints>
@@ -666,6 +686,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="勤怠修正" id="rpu-ZY-NQG"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cellDate" destination="zxB-fo-DZ0" id="rR4-KZ-BdW"/>
+                        <outlet property="cellDetail" destination="ftq-7g-pzW" id="Sqk-Fs-djz"/>
+                        <outlet property="cellEndTime" destination="Sg2-wM-JD7" id="pZa-18-yjA"/>
+                        <outlet property="cellRestTime" destination="MgA-0w-svt" id="5g5-S7-Ygd"/>
+                        <outlet property="cellStartTime" destination="3Br-Bj-EBS" id="Sm5-Bh-jan"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyj-Po-4OO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -682,6 +709,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WjL-fY-3u1"/>
+        <segue reference="LsG-Sb-v2I"/>
     </inferredMetricsTieBreakers>
 </document>

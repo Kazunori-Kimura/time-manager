@@ -29,6 +29,8 @@
 		0BF031A917C2535F005CF446 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031A817C2535F005CF446 /* Project.m */; };
 		0BF031AC17C2535F005CF446 /* Report.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031AB17C2535F005CF446 /* Report.m */; };
 		0BF031AF17C253AB005CF446 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031AE17C253AB005CF446 /* DataManager.m */; };
+		0BFDAA7117C39CE8005350AC /* DailyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFDAA7017C39CE8005350AC /* DailyDetailViewController.m */; };
+		0BFDAA7417C3B689005350AC /* WeeklyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFDAA7317C3B689005350AC /* WeeklyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,10 @@
 		0BF031AB17C2535F005CF446 /* Report.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Report.m; sourceTree = "<group>"; };
 		0BF031AD17C253AB005CF446 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		0BF031AE17C253AB005CF446 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		0BFDAA6F17C39CE8005350AC /* DailyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDetailViewController.h; sourceTree = "<group>"; };
+		0BFDAA7017C39CE8005350AC /* DailyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDetailViewController.m; sourceTree = "<group>"; };
+		0BFDAA7217C3B689005350AC /* WeeklyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyViewController.h; sourceTree = "<group>"; };
+		0BFDAA7317C3B689005350AC /* WeeklyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,10 @@
 				0BA0683817B7B48B00F9CBE3 /* AppDelegate.h */,
 				0BA0683917B7B48B00F9CBE3 /* AppDelegate.m */,
 				0BA0684117B7B48B00F9CBE3 /* MainStoryboard.storyboard */,
+				0BFDAA7217C3B689005350AC /* WeeklyViewController.h */,
+				0BFDAA7317C3B689005350AC /* WeeklyViewController.m */,
+				0BFDAA6F17C39CE8005350AC /* DailyDetailViewController.h */,
+				0BFDAA7017C39CE8005350AC /* DailyDetailViewController.m */,
 				0BF0319C17C24DCE005CF446 /* DatePickerViewController.h */,
 				0BF0319D17C24DCE005CF446 /* DatePickerViewController.m */,
 				0BA0684417B7B48B00F9CBE3 /* ViewController.h */,
@@ -230,6 +240,8 @@
 				0BF031A917C2535F005CF446 /* Project.m in Sources */,
 				0BF031AC17C2535F005CF446 /* Report.m in Sources */,
 				0BF031AF17C253AB005CF446 /* DataManager.m in Sources */,
+				0BFDAA7117C39CE8005350AC /* DailyDetailViewController.m in Sources */,
+				0BFDAA7417C3B689005350AC /* WeeklyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
