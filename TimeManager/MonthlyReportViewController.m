@@ -1,22 +1,18 @@
 //
-//  WeeklyViewController.m
+//  MonthlyReportViewController.m
 //  TimeManager
 //
-//  Created by Kimura Kazunori on 2013/08/20.
+//  Created by Kimura Kazunori on 2013/08/21.
 //  Copyright (c) 2013年 Kimura Kazunori. All rights reserved.
 //
 
-#import "WeeklyViewController.h"
-#import "DailyDetailViewController.h"
+#import "MonthlyReportViewController.h"
 
-@interface WeeklyViewController ()
+@interface MonthlyReportViewController ()
 
 @end
 
-@implementation WeeklyViewController
-
-//1day = 24 * 60 * 60 sec
-const int SEC_DAY = 86400;
+@implementation MonthlyReportViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,17 +33,17 @@ const int SEC_DAY = 86400;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    NSDate *today = [NSDate date];
     //今日
-    self.today = [NSDate date];
-    //今週の日曜日を取得
     NSCalendar *c = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:self.today];
-    self.baseDate = [self.today initWithTimeInterval: SEC_DAY * (1 - comp.weekday) sinceDate:self.today];
+    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:today];
     
-    //比較用
-    self.today_value = comp.year * 10000 + comp.month * 100 + comp.day;
+    //ラベル更新
+    self.labelYearMonth.text = [NSString stringWithFormat:@"%04d年 %02d月", comp.year, comp.month];
     
-    self.tableView.rowHeight = 80;
+    //１日を取得
+    comp.day = 1;
+    self.baseDate = [c dateFromComponents:comp];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,12 +63,12 @@ const int SEC_DAY = 86400;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 7;
+    return [self getLastDay:self.baseDate];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"cellDate";
+    static NSString *CellIdentifier = @"cellMonthReport";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
@@ -84,23 +80,19 @@ const int SEC_DAY = 86400;
 //cell更新
 - (void)updateCell:(UITableViewCell *)cell rowIndex:(NSInteger)rowIndex
 {
-    UILabel *l1 = (UILabel*)[cell viewWithTag:1]; //year/month
-    UILabel *l2 = (UILabel*)[cell viewWithTag:2]; //day (w)
-    UILabel *l3 = (UILabel*)[cell viewWithTag:3]; //start_time
-    UILabel *l4 = (UILabel*)[cell viewWithTag:4]; //end_time
+    UILabel *l1 = (UILabel*)[cell viewWithTag:1]; //day (w)
+    UILabel *l2 = (UILabel*)[cell viewWithTag:2]; //start_time
+    UILabel *l3 = (UILabel*)[cell viewWithTag:3]; //end_time
+    UILabel *l4 = (UILabel*)[cell viewWithTag:4]; //lunch_time
     UILabel *l5 = (UILabel*)[cell viewWithTag:5]; //rest_time
-    UILabel *l6 = (UILabel*)[cell viewWithTag:6]; //comment
     
-    NSDate *d = [self.baseDate initWithTimeInterval:SEC_DAY * rowIndex sinceDate:self.baseDate];
+    NSDate *d = [self.baseDate initWithTimeInterval:86400 * rowIndex sinceDate:self.baseDate];
     NSCalendar *c = [NSCalendar currentCalendar];
     NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:d];
     NSArray *weekday = [NSArray arrayWithObjects:@"", @"日", @"月", @"火", @"水", @"木", @"金", @"土", nil];
     
     UIColor *fontColor = [UIColor blackColor];
-    NSInteger date = comp.year * 10000 + comp.month * 100 + comp.day;
-    if(self.today_value == date){
-        fontColor = [UIColor greenColor];
-    }else if(comp.weekday == 1){
+    if(comp.weekday == 1){
         //日曜日
         fontColor = [UIColor redColor];
     }else if(comp.weekday == 7){
@@ -108,10 +100,8 @@ const int SEC_DAY = 86400;
         fontColor = [UIColor blueColor];
     }
     
-    l1.text = [NSString stringWithFormat:@"%04d/%02d", comp.year, comp.month];
+    l1.text = [NSString stringWithFormat:@"%02d (%@)", comp.day, weekday[comp.weekday]];
     l1.textColor = fontColor;
-    l2.text = [NSString stringWithFormat:@"%02d (%@)", comp.day, weekday[comp.weekday]];
-    l2.textColor = fontColor;
 }
 
 /*
@@ -166,27 +156,53 @@ const int SEC_DAY = 86400;
      */
 }
 
-- (IBAction)tapPrev:(id)sender {
-    self.baseDate = [self.baseDate initWithTimeInterval: SEC_DAY * -7 sinceDate:self.baseDate];
+/**
+ * 月末の日にちを取得する
+ * @param NSDate
+ * @return 月末の日にち
+ */
+-(NSInteger)getLastDay:(NSDate *)date
+{
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSRange range = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date];
+    return range.length;
+}
+
+//ヘッダー部分更新
+-(void)updateTableHeader
+{
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self.baseDate];
+    //header
+    self.labelYearMonth.text = [NSString stringWithFormat:@"%04d年 %02d月", comp.year, comp.month];
+}
+
+//前月
+- (IBAction)tapPrevMonth:(id)sender {
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self.baseDate];
+    comp.month--;
+    self.baseDate = [c dateFromComponents:comp];
+    
+    //header
+    [self updateTableHeader];
+    //reload
     [self.tableView reloadData];
 }
 
-- (IBAction)tapNext:(id)sender {
-    self.baseDate = [self.baseDate initWithTimeInterval: SEC_DAY * 7 sinceDate:self.baseDate];
+//翌月
+- (IBAction)tapNextMonth:(id)sender {
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self.baseDate];
+    comp.month++;
+    self.baseDate = [c dateFromComponents:comp];
+    
+    //header
+    [self updateTableHeader];
+    //reload
     [self.tableView reloadData];
 }
 
-//weeklyToDetailViewSegue
-//画面遷移
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([[segue identifier] isEqualToString:@"weeklyToDetailViewSegue"]) {
-        //選択セル取得
-        NSIndexPath *idx = [self.tableView indexPathForCell:sender];
-        //NSLog(@"%d", idx.row);
-        NSDate *d = [self.baseDate initWithTimeInterval:SEC_DAY * idx.row sinceDate:self.baseDate];
-        
-        DailyDetailViewController *view = [segue destinationViewController];
-        view.today = d;
-    }
+- (IBAction)exportPdf:(id)sender {
 }
 @end

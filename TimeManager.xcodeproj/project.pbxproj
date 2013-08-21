@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B8C12A217C4F32B0067B140 /* MonthlyReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C12A117C4F32B0067B140 /* MonthlyReportViewController.m */; };
+		0B8C12A517C4FFD60067B140 /* ReportSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C12A417C4FFD60067B140 /* ReportSettingsViewController.m */; };
 		0BA0682A17B7B48B00F9CBE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA0682917B7B48B00F9CBE3 /* UIKit.framework */; };
 		0BA0682C17B7B48B00F9CBE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA0682B17B7B48B00F9CBE3 /* Foundation.framework */; };
 		0BA0682E17B7B48B00F9CBE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA0682D17B7B48B00F9CBE3 /* CoreGraphics.framework */; };
@@ -34,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B8C12A017C4F32B0067B140 /* MonthlyReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthlyReportViewController.h; sourceTree = "<group>"; };
+		0B8C12A117C4F32B0067B140 /* MonthlyReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthlyReportViewController.m; sourceTree = "<group>"; };
+		0B8C12A317C4FFD60067B140 /* ReportSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportSettingsViewController.h; sourceTree = "<group>"; };
+		0B8C12A417C4FFD60067B140 /* ReportSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSettingsViewController.m; sourceTree = "<group>"; };
 		0BA0682617B7B48B00F9CBE3 /* TimeManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA0682917B7B48B00F9CBE3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0BA0682B17B7B48B00F9CBE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,10 +136,14 @@
 				0BA0683817B7B48B00F9CBE3 /* AppDelegate.h */,
 				0BA0683917B7B48B00F9CBE3 /* AppDelegate.m */,
 				0BA0684117B7B48B00F9CBE3 /* MainStoryboard.storyboard */,
+				0B8C12A317C4FFD60067B140 /* ReportSettingsViewController.h */,
+				0B8C12A417C4FFD60067B140 /* ReportSettingsViewController.m */,
 				0BFDAA7217C3B689005350AC /* WeeklyViewController.h */,
 				0BFDAA7317C3B689005350AC /* WeeklyViewController.m */,
 				0BFDAA6F17C39CE8005350AC /* DailyDetailViewController.h */,
 				0BFDAA7017C39CE8005350AC /* DailyDetailViewController.m */,
+				0B8C12A017C4F32B0067B140 /* MonthlyReportViewController.h */,
+				0B8C12A117C4F32B0067B140 /* MonthlyReportViewController.m */,
 				0BF0319C17C24DCE005CF446 /* DatePickerViewController.h */,
 				0BF0319D17C24DCE005CF446 /* DatePickerViewController.m */,
 				0BA0684417B7B48B00F9CBE3 /* ViewController.h */,
@@ -242,6 +252,8 @@
 				0BF031AF17C253AB005CF446 /* DataManager.m in Sources */,
 				0BFDAA7117C39CE8005350AC /* DailyDetailViewController.m in Sources */,
 				0BFDAA7417C3B689005350AC /* WeeklyViewController.m in Sources */,
+				0B8C12A217C4F32B0067B140 /* MonthlyReportViewController.m in Sources */,
+				0B8C12A517C4FFD60067B140 /* ReportSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

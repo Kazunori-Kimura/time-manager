@@ -16,5 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellEndTime;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellRestTime;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellDetail;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellLunchTime;
 
+- (IBAction)saveData:(id)sender;
 @end
