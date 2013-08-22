@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * start_time;
 @property (nonatomic, retain) NSNumber * end_time;
 @property (nonatomic, retain) NSNumber * rest_time;
+@property (nonatomic, retain) NSNumber * lunch_time;
 @property (nonatomic, retain) NSString * detail;
 @property (nonatomic, retain) NSNumber * weather;
 @property (nonatomic, retain) NSNumber * upload_flag;

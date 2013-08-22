@@ -12,6 +12,10 @@
 
 //表示中の日
 @property NSDate *baseDate;
+//今日
+@property NSDate *today;
+@property NSInteger today_value;
+
 @property (weak, nonatomic) IBOutlet UILabel *labelYearMonth;
 - (IBAction)tapPrevMonth:(id)sender;
 - (IBAction)tapNextMonth:(id)sender;

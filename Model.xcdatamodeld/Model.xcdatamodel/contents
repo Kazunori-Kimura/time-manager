@@ -3,6 +3,7 @@
     <entity name="DailyReport" representedClassName="DailyReport" syncable="YES">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="end_time" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lunch_time" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="project_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="report_date" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="rest_time" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -35,8 +36,8 @@
         <attribute name="upload_flag" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
+        <element name="DailyReport" positionX="160" positionY="192" width="128" height="180"/>
         <element name="Project" positionX="160" positionY="192" width="128" height="240"/>
         <element name="Report" positionX="160" positionY="192" width="128" height="150"/>
-        <element name="DailyReport" positionX="160" positionY="192" width="128" height="165"/>
     </elements>
 </model>

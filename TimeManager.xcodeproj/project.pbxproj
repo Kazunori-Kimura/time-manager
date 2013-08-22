@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B559DC017C62FCB0098D9C5 /* MyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DBF17C62FCB0098D9C5 /* MyUtil.m */; };
+		0B559DC317C637F40098D9C5 /* PdfWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DC217C637F40098D9C5 /* PdfWriter.m */; };
+		0B559DC517C638380098D9C5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B559DC417C638380098D9C5 /* CoreText.framework */; };
+		0B559DCC17C643970098D9C5 /* DSJSONRPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DC917C643970098D9C5 /* DSJSONRPC.m */; };
+		0B559DCD17C643970098D9C5 /* DSJSONRPCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DCB17C643970098D9C5 /* DSJSONRPCError.m */; };
+		0B559DCF17C643B40098D9C5 /* pdf_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B559DCE17C643B40098D9C5 /* pdf_back.png */; };
+		0B559DD217C6471D0098D9C5 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DD117C6471D0098D9C5 /* Setting.m */; };
+		0B559DD517C6480E0098D9C5 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DD417C6480E0098D9C5 /* SettingController.m */; };
 		0B8C12A217C4F32B0067B140 /* MonthlyReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C12A117C4F32B0067B140 /* MonthlyReportViewController.m */; };
 		0B8C12A517C4FFD60067B140 /* ReportSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C12A417C4FFD60067B140 /* ReportSettingsViewController.m */; };
 		0BA0682A17B7B48B00F9CBE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA0682917B7B48B00F9CBE3 /* UIKit.framework */; };
@@ -24,7 +32,6 @@
 		0BA0685117B7B54100F9CBE3 /* button1-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0684D17B7B54100F9CBE3 /* button1-2.png */; };
 		0BA0685217B7B54100F9CBE3 /* button2-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0684E17B7B54100F9CBE3 /* button2-1.png */; };
 		0BA0685317B7B54100F9CBE3 /* button2-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA0684F17B7B54100F9CBE3 /* button2-2.png */; };
-		0BF0319E17C24DCE005CF446 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0319D17C24DCE005CF446 /* DatePickerViewController.m */; };
 		0BF031A017C251C2005CF446 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF0319F17C251C2005CF446 /* CoreData.framework */; };
 		0BF031A317C251DC005CF446 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031A117C251DC005CF446 /* Model.xcdatamodeld */; };
 		0BF031A617C2535E005CF446 /* DailyReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031A517C2535E005CF446 /* DailyReport.m */; };
@@ -32,10 +39,24 @@
 		0BF031AC17C2535F005CF446 /* Report.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031AB17C2535F005CF446 /* Report.m */; };
 		0BF031AF17C253AB005CF446 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF031AE17C253AB005CF446 /* DataManager.m */; };
 		0BFDAA7117C39CE8005350AC /* DailyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFDAA7017C39CE8005350AC /* DailyDetailViewController.m */; };
-		0BFDAA7417C3B689005350AC /* WeeklyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFDAA7317C3B689005350AC /* WeeklyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B559DBE17C62FCB0098D9C5 /* MyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUtil.h; sourceTree = "<group>"; };
+		0B559DBF17C62FCB0098D9C5 /* MyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUtil.m; sourceTree = "<group>"; };
+		0B559DC117C637F40098D9C5 /* PdfWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdfWriter.h; sourceTree = "<group>"; };
+		0B559DC217C637F40098D9C5 /* PdfWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PdfWriter.m; sourceTree = "<group>"; };
+		0B559DC417C638380098D9C5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		0B559DC717C643970098D9C5 /* DSARCHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSARCHelpers.h; sourceTree = "<group>"; };
+		0B559DC817C643970098D9C5 /* DSJSONRPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSJSONRPC.h; sourceTree = "<group>"; };
+		0B559DC917C643970098D9C5 /* DSJSONRPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJSONRPC.m; sourceTree = "<group>"; };
+		0B559DCA17C643970098D9C5 /* DSJSONRPCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSJSONRPCError.h; sourceTree = "<group>"; };
+		0B559DCB17C643970098D9C5 /* DSJSONRPCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJSONRPCError.m; sourceTree = "<group>"; };
+		0B559DCE17C643B40098D9C5 /* pdf_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pdf_back.png; sourceTree = "<group>"; };
+		0B559DD017C6471D0098D9C5 /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Setting.h; path = TimeManager/Setting.h; sourceTree = SOURCE_ROOT; };
+		0B559DD117C6471D0098D9C5 /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Setting.m; path = TimeManager/Setting.m; sourceTree = SOURCE_ROOT; };
+		0B559DD317C6480E0098D9C5 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
+		0B559DD417C6480E0098D9C5 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
 		0B8C12A017C4F32B0067B140 /* MonthlyReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthlyReportViewController.h; sourceTree = "<group>"; };
 		0B8C12A117C4F32B0067B140 /* MonthlyReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthlyReportViewController.m; sourceTree = "<group>"; };
 		0B8C12A317C4FFD60067B140 /* ReportSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportSettingsViewController.h; sourceTree = "<group>"; };
@@ -60,8 +81,6 @@
 		0BA0684D17B7B54100F9CBE3 /* button1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button1-2.png"; sourceTree = "<group>"; };
 		0BA0684E17B7B54100F9CBE3 /* button2-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button2-1.png"; sourceTree = "<group>"; };
 		0BA0684F17B7B54100F9CBE3 /* button2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button2-2.png"; sourceTree = "<group>"; };
-		0BF0319C17C24DCE005CF446 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
-		0BF0319D17C24DCE005CF446 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		0BF0319F17C251C2005CF446 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0BF031A217C251DC005CF446 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0BF031A417C2535E005CF446 /* DailyReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyReport.h; sourceTree = "<group>"; };
@@ -74,8 +93,6 @@
 		0BF031AE17C253AB005CF446 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		0BFDAA6F17C39CE8005350AC /* DailyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDetailViewController.h; sourceTree = "<group>"; };
 		0BFDAA7017C39CE8005350AC /* DailyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDetailViewController.m; sourceTree = "<group>"; };
-		0BFDAA7217C3B689005350AC /* WeeklyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyViewController.h; sourceTree = "<group>"; };
-		0BFDAA7317C3B689005350AC /* WeeklyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B559DC517C638380098D9C5 /* CoreText.framework in Frameworks */,
 				0BF031A017C251C2005CF446 /* CoreData.framework in Frameworks */,
 				0BA0682A17B7B48B00F9CBE3 /* UIKit.framework in Frameworks */,
 				0BA0682C17B7B48B00F9CBE3 /* Foundation.framework in Frameworks */,
@@ -93,6 +111,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B559DC617C643970098D9C5 /* DSJSONRPC */ = {
+			isa = PBXGroup;
+			children = (
+				0B559DC717C643970098D9C5 /* DSARCHelpers.h */,
+				0B559DC817C643970098D9C5 /* DSJSONRPC.h */,
+				0B559DC917C643970098D9C5 /* DSJSONRPC.m */,
+				0B559DCA17C643970098D9C5 /* DSJSONRPCError.h */,
+				0B559DCB17C643970098D9C5 /* DSJSONRPCError.m */,
+			);
+			path = DSJSONRPC;
+			sourceTree = "<group>";
+		};
 		0BA0681D17B7B48B00F9CBE3 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +143,7 @@
 		0BA0682817B7B48B00F9CBE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B559DC417C638380098D9C5 /* CoreText.framework */,
 				0BF0319F17C251C2005CF446 /* CoreData.framework */,
 				0BA0682917B7B48B00F9CBE3 /* UIKit.framework */,
 				0BA0682B17B7B48B00F9CBE3 /* Foundation.framework */,
@@ -124,28 +155,33 @@
 		0BA0682F17B7B48B00F9CBE3 /* TimeManager */ = {
 			isa = PBXGroup;
 			children = (
+				0B559DC617C643970098D9C5 /* DSJSONRPC */,
 				0BF031A117C251DC005CF446 /* Model.xcdatamodeld */,
+				0B559DD017C6471D0098D9C5 /* Setting.h */,
+				0B559DD117C6471D0098D9C5 /* Setting.m */,
+				0B559DD317C6480E0098D9C5 /* SettingController.h */,
+				0B559DD417C6480E0098D9C5 /* SettingController.m */,
 				0BF031AA17C2535F005CF446 /* Report.h */,
 				0BF031AB17C2535F005CF446 /* Report.m */,
 				0BF031A717C2535F005CF446 /* Project.h */,
 				0BF031A817C2535F005CF446 /* Project.m */,
 				0BF031A417C2535E005CF446 /* DailyReport.h */,
+				0BF031A517C2535E005CF446 /* DailyReport.m */,
 				0BF031AD17C253AB005CF446 /* DataManager.h */,
 				0BF031AE17C253AB005CF446 /* DataManager.m */,
-				0BF031A517C2535E005CF446 /* DailyReport.m */,
 				0BA0683817B7B48B00F9CBE3 /* AppDelegate.h */,
 				0BA0683917B7B48B00F9CBE3 /* AppDelegate.m */,
 				0BA0684117B7B48B00F9CBE3 /* MainStoryboard.storyboard */,
+				0B559DBE17C62FCB0098D9C5 /* MyUtil.h */,
+				0B559DBF17C62FCB0098D9C5 /* MyUtil.m */,
+				0B559DC117C637F40098D9C5 /* PdfWriter.h */,
+				0B559DC217C637F40098D9C5 /* PdfWriter.m */,
 				0B8C12A317C4FFD60067B140 /* ReportSettingsViewController.h */,
 				0B8C12A417C4FFD60067B140 /* ReportSettingsViewController.m */,
-				0BFDAA7217C3B689005350AC /* WeeklyViewController.h */,
-				0BFDAA7317C3B689005350AC /* WeeklyViewController.m */,
 				0BFDAA6F17C39CE8005350AC /* DailyDetailViewController.h */,
 				0BFDAA7017C39CE8005350AC /* DailyDetailViewController.m */,
 				0B8C12A017C4F32B0067B140 /* MonthlyReportViewController.h */,
 				0B8C12A117C4F32B0067B140 /* MonthlyReportViewController.m */,
-				0BF0319C17C24DCE005CF446 /* DatePickerViewController.h */,
-				0BF0319D17C24DCE005CF446 /* DatePickerViewController.m */,
 				0BA0684417B7B48B00F9CBE3 /* ViewController.h */,
 				0BA0684517B7B48B00F9CBE3 /* ViewController.m */,
 				0BA0683017B7B48B00F9CBE3 /* Supporting Files */,
@@ -160,6 +196,7 @@
 				0BA0684D17B7B54100F9CBE3 /* button1-2.png */,
 				0BA0684E17B7B54100F9CBE3 /* button2-1.png */,
 				0BA0684F17B7B54100F9CBE3 /* button2-2.png */,
+				0B559DCE17C643B40098D9C5 /* pdf_back.png */,
 				0BA0683117B7B48B00F9CBE3 /* TimeManager-Info.plist */,
 				0BA0683217B7B48B00F9CBE3 /* InfoPlist.strings */,
 				0BA0683517B7B48B00F9CBE3 /* main.m */,
@@ -231,6 +268,7 @@
 				0BA0685117B7B54100F9CBE3 /* button1-2.png in Resources */,
 				0BA0685217B7B54100F9CBE3 /* button2-1.png in Resources */,
 				0BA0685317B7B54100F9CBE3 /* button2-2.png in Resources */,
+				0B559DCF17C643B40098D9C5 /* pdf_back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,16 +282,20 @@
 				0BA0683617B7B48B00F9CBE3 /* main.m in Sources */,
 				0BA0683A17B7B48B00F9CBE3 /* AppDelegate.m in Sources */,
 				0BA0684617B7B48B00F9CBE3 /* ViewController.m in Sources */,
-				0BF0319E17C24DCE005CF446 /* DatePickerViewController.m in Sources */,
 				0BF031A317C251DC005CF446 /* Model.xcdatamodeld in Sources */,
 				0BF031A617C2535E005CF446 /* DailyReport.m in Sources */,
 				0BF031A917C2535F005CF446 /* Project.m in Sources */,
 				0BF031AC17C2535F005CF446 /* Report.m in Sources */,
 				0BF031AF17C253AB005CF446 /* DataManager.m in Sources */,
 				0BFDAA7117C39CE8005350AC /* DailyDetailViewController.m in Sources */,
-				0BFDAA7417C3B689005350AC /* WeeklyViewController.m in Sources */,
 				0B8C12A217C4F32B0067B140 /* MonthlyReportViewController.m in Sources */,
 				0B8C12A517C4FFD60067B140 /* ReportSettingsViewController.m in Sources */,
+				0B559DC017C62FCB0098D9C5 /* MyUtil.m in Sources */,
+				0B559DC317C637F40098D9C5 /* PdfWriter.m in Sources */,
+				0B559DCC17C643970098D9C5 /* DSJSONRPC.m in Sources */,
+				0B559DCD17C643970098D9C5 /* DSJSONRPCError.m in Sources */,
+				0B559DD217C6471D0098D9C5 /* Setting.m in Sources */,
+				0B559DD517C6480E0098D9C5 /* SettingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

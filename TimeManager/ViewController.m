@@ -6,8 +6,14 @@
 //  Copyright (c) 2013年 Kimura Kazunori. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
 #import "ViewController.h"
 #import "DailyDetailViewController.h"
+#import "DataManager.h"
+#import "DailyReport.h"
+#import "MyUtil.h"
+#import "Setting.h"
+#import "SettingController.h"
 
 @interface ViewController ()
 
@@ -15,6 +21,10 @@
 @property NSDate *today;
 //CoreData登録のために今日日付をNSIntegerで保持
 @property NSInteger report_date;
+
+@property DailyReport *dailyReport;
+@property (nonatomic, retain) DataManager *dm;
+@property Setting *setting;
 
 @end
 
@@ -40,10 +50,9 @@
     self.today = [NSDate date];
     
     //ラベルに日付をセット yyyy/mm/dd (w)
-    NSCalendar *c = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:self.today];
-    NSArray *weekday = [NSArray arrayWithObjects:@"", @"日", @"月", @"火", @"水", @"木", @"金", @"土", nil];
-    labelToday.text = [NSString stringWithFormat:@"%d/%02d/%02d (%@)", comp.year, comp.month, comp.day, weekday[comp.weekday]];
+    NSDateComponents *comp = [MyUtil dateComponentFromDate:self.today];
+    labelToday.text = [NSString stringWithFormat:@"%d/%02d/%02d (%@)", comp.year, comp.month, comp.day,
+                       [MyUtil stringWeekday:self.today]];
     
     //CoreDataのキー
     self.report_date = comp.year * 10000 + comp.month * 100 * comp.day;
@@ -51,6 +60,31 @@
     //disable時の画像をセット
     [buttonArrive setImage:[UIImage imageNamed:@"button1-2.png"] forState:UIControlStateDisabled];
     [buttonLeave setImage:[UIImage imageNamed:@"button2-2.png"] forState:UIControlStateDisabled];
+    
+    //CoreData
+    self.dm = [[DataManager alloc] init];
+    //DailyReportを取得
+    NSMutableArray *results = [self.dm getDailyReportByReportDate:self.report_date];
+    if(results != nil && results.count > 0){
+        self.dailyReport = (DailyReport *) results[0]; //キー項目なので一個だけのはず
+        
+        //出勤時間が設定されている？
+        if(self.dailyReport.start_time != nil && self.dailyReport.start_time.integerValue > 0){
+            labelStartTime.text = [MyUtil stringHourMinute:self.dailyReport.start_time];
+            [buttonArrive setEnabled:NO];
+        }
+        //退勤時間が設定されている？
+        if(self.dailyReport.end_time != nil && self.dailyReport.end_time.integerValue > 0){
+            labelEndTime.text = [MyUtil stringHourMinute:self.dailyReport.end_time];
+            [buttonLeave setEnabled:NO];
+        }
+    }else{
+        self.dailyReport = nil;
+    }
+    
+    //共通設定取得
+    SettingController *sc = [[SettingController alloc] init];
+    self.setting = [sc load];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,34 +96,39 @@
 //出勤ボタンをタップ
 - (IBAction)tapArrive:(id)sender {
     NSDate *d = [NSDate date];
-    NSDateComponents *comp = [self getTime:d];
+    NSDateComponents *comp = [MyUtil dateComponentFromDate:d];
     
     //ラベルセット
     labelStartTime.text = [NSString stringWithFormat:@"%02d:%02d", comp.hour, comp.minute];
     //ボタン無効化
     [buttonArrive setEnabled:NO];
+    
+    if(self.dailyReport == nil){
+        self.dailyReport = [self.dm createDailyReport];
+        self.dailyReport.report_date = [NSNumber numberWithInt:self.report_date];
+        self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+    }
+    self.dailyReport.start_time = [NSNumber numberWithInt:comp.hour * 100 + comp.minute];
+    [self.dm saveData];
 }
 
 //退勤ボタンをタップ
 - (IBAction)tapLeave:(id)sender {
     NSDate *d = [NSDate date];
-    NSDateComponents *comp = [self getTime:d];
+    NSDateComponents *comp = [MyUtil dateComponentFromDate:d];
     
     //ラベルセット
     labelEndTime.text = [NSString stringWithFormat:@"%02d:%02d", comp.hour, comp.minute];
     //ボタン無効化
     [buttonLeave setEnabled:NO];
-}
-
-/**
- * NSDateからHHMMを取得
- * @param now {NSDate}
- * @return NSDateComponents (Hour, Minute)
- */
-- (NSDateComponents *) getTime:(NSDate *)now {
-    NSCalendar *c = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [c components:NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
-    return comp;
+    
+    if(self.dailyReport == nil){
+        self.dailyReport = [self.dm createDailyReport];
+        self.dailyReport.report_date = [NSNumber numberWithInt:self.report_date];
+        self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+    }
+    self.dailyReport.end_time = [NSNumber numberWithInt:comp.hour * 100 + comp.minute];
+    [self.dm saveData];
 }
 
 //画面遷移

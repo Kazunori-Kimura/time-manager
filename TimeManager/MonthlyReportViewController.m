@@ -7,6 +7,8 @@
 //
 
 #import "MonthlyReportViewController.h"
+#import "DailyDetailViewController.h"
+#import "MyUtil.h"
 
 @interface MonthlyReportViewController ()
 
@@ -86,10 +88,8 @@
     UILabel *l4 = (UILabel*)[cell viewWithTag:4]; //lunch_time
     UILabel *l5 = (UILabel*)[cell viewWithTag:5]; //rest_time
     
-    NSDate *d = [self.baseDate initWithTimeInterval:86400 * rowIndex sinceDate:self.baseDate];
-    NSCalendar *c = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:d];
-    NSArray *weekday = [NSArray arrayWithObjects:@"", @"日", @"月", @"火", @"水", @"木", @"金", @"土", nil];
+    NSDate *d = [MyUtil initWithDayInterval:rowIndex fromDate:self.baseDate];
+    NSDateComponents *comp = [MyUtil dateComponentFromDate:d];
     
     UIColor *fontColor = [UIColor blackColor];
     if(comp.weekday == 1){
@@ -100,7 +100,7 @@
         fontColor = [UIColor blueColor];
     }
     
-    l1.text = [NSString stringWithFormat:@"%02d (%@)", comp.day, weekday[comp.weekday]];
+    l1.text = [NSString stringWithFormat:@"%02d (%@)", comp.day, [MyUtil stringWeekday:d]];
     l1.textColor = fontColor;
 }
 
@@ -171,8 +171,7 @@
 //ヘッダー部分更新
 -(void)updateTableHeader
 {
-    NSCalendar *c = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self.baseDate];
+    NSDateComponents *comp = [MyUtil dateComponentFromDate:self.baseDate];
     //header
     self.labelYearMonth.text = [NSString stringWithFormat:@"%04d年 %02d月", comp.year, comp.month];
 }
@@ -204,5 +203,18 @@
 }
 
 - (IBAction)exportPdf:(id)sender {
+}
+
+//画面遷移
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"monthlyToDetailViewSegue"]) {
+        //選択セル取得
+        NSIndexPath *idx = [self.tableView indexPathForCell:sender];
+        //NSLog(@"%d", idx.row);
+        NSDate *d = [MyUtil initWithDayInterval:idx.row fromDate:self.baseDate];
+        
+        DailyDetailViewController *view = [segue destinationViewController];
+        view.today = d;
+    }
 }
 @end

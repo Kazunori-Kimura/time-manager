@@ -16,6 +16,7 @@
 @dynamic start_time;
 @dynamic end_time;
 @dynamic rest_time;
+@dynamic lunch_time;
 @dynamic detail;
 @dynamic weather;
 @dynamic upload_flag;
