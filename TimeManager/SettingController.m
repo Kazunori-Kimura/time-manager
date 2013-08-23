@@ -12,7 +12,7 @@
 @implementation SettingController
 
 //NSUserDefaultsにデータを保存する
--(BOOL)saveSetting:(Setting *)setting{
++(BOOL)saveUserDefaults:(Setting *)setting{
     
     //NSUserDefaultsを取得
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -20,25 +20,31 @@
     //Setting Objectから値を取得してNSUserDefaultsに格納
     if(setting != nil){
         if([setting.partnerId length] != 0){
-            [ud setObject:setting.partnerId forKey:@"PARTNER_ID"];
+            [ud setObject:setting.partnerId forKey:@"PartnerID"];
         }
         if([setting.partnerName length] != 0){
-            [ud setObject:setting.partnerName forKey:@"PARTNER_NAME"];
+            [ud setObject:setting.partnerName forKey:@"UserName"];
         }
         if([setting.password length] != 0){
-            [ud setObject:setting.password forKey:@"PASSWORD"];
+            [ud setObject:setting.password forKey:@"Password"];
         }
         if([setting.tel length] != 0){
-            [ud setObject:setting.tel forKey:@"TEL"];
+            [ud setObject:setting.tel forKey:@"Tel"];
+        }
+        if([setting.naisen length] != 0){
+            [ud setObject:setting.tel forKey:@"Naisen"];
+        }
+        if([setting.yobidasi length] != 0){
+            [ud setObject:setting.tel forKey:@"Yobidasi"];
         }
         if([setting.mail length] != 0){
-            [ud setObject:setting.mail forKey:@"MAIL"];
+            [ud setObject:setting.mail forKey:@"Mail"];
         }
-        if([setting.url length] == 0){
-            //[TODO] URLを外出しにしたい
-            setting.url = @"http://www.exsample.com";
+        if([setting.url length] != 0){
+            [ud setObject:setting.url forKey:@"ServerUrl"];
         }
-        [ud setObject:setting.url forKey:@"URL"];
+        [ud setBool:setting.canUpload forKey:@"Enabled"];
+        
         //強制保存
         [ud synchronize];
         
@@ -49,28 +55,22 @@
 }
 
 //NSUserDefaultsからデータを取得する
--(Setting *)load{
++(Setting *)loadUserDefaults{
     //NSUserDefaultsを取得
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    //初期値を定義
-    NSMutableDictionary *def = [NSMutableDictionary dictionary];
-    //[TODO] URLを外出しにしたい
-    [def setObject:@"k1342sh" forKey:@"PARTNER_ID"];
-    [def setObject:@"abc123" forKey:@"PASSWORD"];
-    [def setObject:@"http://www.exsample.com" forKey:@"URL"];
-    //NSUserDefaultsに初期値を設定する
-    [ud registerDefaults:def];
-    
     Setting *st = [[Setting alloc] init];
-    st.partnerId = [ud stringForKey:@"PARTNER_ID"];
-    st.partnerName = [ud stringForKey:@"PARTNER_NAME"];
-    st.password = [ud stringForKey:@"PASSWORD"];
-    st.tel = [ud stringForKey:@"TEL"];
-    st.mail = [ud stringForKey:@"MAIL"];
-    st.url = [ud stringForKey:@"URL"];
+    st.partnerId = [ud stringForKey:@"PartnerID"];
+    st.partnerName = [ud stringForKey:@"UserName"];
+    st.password = [ud stringForKey:@"Password"];
+    st.tel = [ud stringForKey:@"Tel"];
+    st.naisen = [ud stringForKey:@"Naisen"];
+    st.yobidasi = [ud stringForKey:@"Yobidasi"];
+    st.mail = [ud stringForKey:@"Mail"];
+    st.url = [ud stringForKey:@"ServerUrl"];
+    st.canUpload = [ud boolForKey:@"Enabled"];
     
-    NSLog(@"確認 %@", st.url);
+    NSLog(@"%@ %@", st.partnerId, st.url);
     
     return st;
 }

@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MonthlyReportViewController : UITableViewController
+@interface MonthlyReportViewController : UITableViewController <UIDocumentInteractionControllerDelegate>
+{
+    UIDocumentInteractionController *interactionController;
+}
+
+@property (nonatomic, retain) UIDocumentInteractionController *interactionController;
 
 //表示中の日
 @property NSDate *baseDate;

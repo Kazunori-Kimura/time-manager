@@ -624,6 +624,14 @@
                         <outlet property="cellTel3" destination="4BZ-be-Jhf" id="9r9-br-eOU"/>
                         <outlet property="cellUserName" destination="On0-Hg-lkb" id="GwX-YK-6Ct"/>
                         <outlet property="cellWorkspace" destination="zqt-oa-ae5" id="Rjw-yp-KP5"/>
+                        <outlet property="textCompany" destination="85x-PU-zTC" id="xrC-wo-WiQ"/>
+                        <outlet property="textLunchTime" destination="MnC-PT-7o7" id="Qef-Pi-QKr"/>
+                        <outlet property="textManager" destination="DkQ-As-KDb" id="T6V-oT-ss6"/>
+                        <outlet property="textNaisen" destination="SQy-8u-GTk" id="rUH-At-ihj"/>
+                        <outlet property="textTel" destination="17S-sw-Mcp" id="kZn-43-7jt"/>
+                        <outlet property="textUserName" destination="HnS-g3-V8P" id="BU7-32-kls"/>
+                        <outlet property="textWorkplace" destination="Lpn-zh-aBG" id="FER-9L-bBv"/>
+                        <outlet property="textYobidasi" destination="ouG-mb-DaU" id="4Kd-mu-3TH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SN-oj-Nhg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -881,58 +889,6 @@
         <image name="button1-1.png" width="133" height="133"/>
         <image name="button2-1.png" width="133" height="133"/>
     </resources>
-    <classes>
-        <class className="DailyDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saveData:"/>
-                <relationship kind="outlet" name="cellDate" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellDetail" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellEndTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellLunchTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellRestTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellStartTime" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="MonthlyReportViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MonthlyReportViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="exportPdf:"/>
-                <relationship kind="action" name="tapNextMonth:"/>
-                <relationship kind="action" name="tapPrevMonth:"/>
-                <relationship kind="outlet" name="labelYearMonth" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ReportSettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReportSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saveSetting:"/>
-                <relationship kind="outlet" name="cellCompany" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellCustomer" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellLunchTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellTel" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellTel2" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellTel3" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellUserName" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellWorkspace" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="tapArrive:"/>
-                <relationship kind="action" name="tapLeave:"/>
-                <relationship kind="outlet" name="buttonArrive" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonLeave" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="labelEndTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelStartTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelToday" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2FDAF717C7AF1500AB59CB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B2FDAF617C7AF1500AB59CB /* Settings.bundle */; };
 		0B559DC017C62FCB0098D9C5 /* MyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DBF17C62FCB0098D9C5 /* MyUtil.m */; };
 		0B559DC317C637F40098D9C5 /* PdfWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DC217C637F40098D9C5 /* PdfWriter.m */; };
 		0B559DC517C638380098D9C5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B559DC417C638380098D9C5 /* CoreText.framework */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B2FDAF617C7AF1500AB59CB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0B559DBE17C62FCB0098D9C5 /* MyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUtil.h; sourceTree = "<group>"; };
 		0B559DBF17C62FCB0098D9C5 /* MyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUtil.m; sourceTree = "<group>"; };
 		0B559DC117C637F40098D9C5 /* PdfWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdfWriter.h; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				0B559DC617C643970098D9C5 /* DSJSONRPC */,
 				0BF031A117C251DC005CF446 /* Model.xcdatamodeld */,
+				0B2FDAF617C7AF1500AB59CB /* Settings.bundle */,
 				0B559DD017C6471D0098D9C5 /* Setting.h */,
 				0B559DD117C6471D0098D9C5 /* Setting.m */,
 				0B559DD317C6480E0098D9C5 /* SettingController.h */,
@@ -269,6 +272,7 @@
 				0BA0685217B7B54100F9CBE3 /* button2-1.png in Resources */,
 				0BA0685317B7B54100F9CBE3 /* button2-2.png in Resources */,
 				0B559DCF17C643B40098D9C5 /* pdf_back.png in Resources */,
+				0B2FDAF717C7AF1500AB59CB /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

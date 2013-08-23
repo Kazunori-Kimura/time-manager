@@ -14,8 +14,11 @@
 partnerName = _partnerName,
 password = _password,
 tel = _tel,
+naisen = _naisen,
+yobidasi = _yobidasi,
 mail = _mail,
 url = _url,
-lunchTime = _lunchTime;
+lunchTime = _lunchTime,
+canUpload = _canUpload;
 
 @end

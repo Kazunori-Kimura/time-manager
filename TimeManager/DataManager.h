@@ -16,16 +16,25 @@
 
 @property (nonatomic, retain) NSManagedObjectContext *context;
 
+//dailyreport
 - (NSMutableArray *) getDailyReportByReportDate:(NSInteger)reportDate;
 - (NSMutableArray *) getDailyReport:(NSPredicate *)predicate;
 - (NSMutableArray *) getDailyReport:(NSPredicate *)predicate sort:(NSSortDescriptor *)sort;
 - (id) createDailyReport;
 
+//report
 - (NSMutableArray *) getReportById:(NSInteger)reportId;
 - (NSMutableArray *) getReport:(NSPredicate *)predicate;
 - (NSMutableArray *) getReport:(NSPredicate *)predicate sort:(NSSortDescriptor *)sort;
 - (NSMutableArray *) getReport:(NSPredicate *)predicate sorts:(NSArray *)sorts;
 - (id) createReport;
+
+//project
+- (NSMutableArray *) getProjectById:(NSInteger)projectId;
+- (NSMutableArray *) getProject:(NSPredicate *)predicate;
+- (NSMutableArray *) getProject:(NSPredicate *)predicate sort:(NSSortDescriptor *)sort;
+- (NSMutableArray *) getProject:(NSPredicate *)predicate sorts:(NSArray *)sorts;
+- (id) createProject;
 
 - (NSMutableArray *) getData:(NSString *)tableName predicate:(NSPredicate *)predicate sort:(NSSortDescriptor *)sort;
 - (NSMutableArray *) getData:(NSString *)tableName predicate:(NSPredicate *)predicate sorts:(NSArray *)sorts;

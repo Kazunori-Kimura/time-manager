@@ -9,12 +9,17 @@
 #import "MonthlyReportViewController.h"
 #import "DailyDetailViewController.h"
 #import "MyUtil.h"
+#import "DataManager.h"
+#import "DailyReport.h"
+#import "PdfWriter.h"
 
 @interface MonthlyReportViewController ()
-
+@property DataManager *dataManager;
 @end
 
 @implementation MonthlyReportViewController
+
+@synthesize interactionController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,6 +51,9 @@
     //１日を取得
     comp.day = 1;
     self.baseDate = [c dateFromComponents:comp];
+    
+    //DataManager取得
+    self.dataManager = [[DataManager alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +73,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self getLastDay:self.baseDate];
+    return [MyUtil getLastDay:self.baseDate];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -102,6 +110,20 @@
     
     l1.text = [NSString stringWithFormat:@"%02d (%@)", comp.day, [MyUtil stringWeekday:d]];
     l1.textColor = fontColor;
+    
+    //CoreDataから該当日のデータを取得
+    NSMutableArray *arr = [self.dataManager getDailyReportByReportDate:[MyUtil numberFromDate:d]];
+    if(arr != nil && arr.count > 0){
+        DailyReport *dr = (DailyReport *) arr[0];
+        //start_time
+        l2.text = [MyUtil stringHourMinute:dr.start_time];
+        //end_time
+        l3.text = [MyUtil stringHourMinute:dr.end_time];
+        //lunch_time
+        l4.text = [NSString stringWithFormat:@"%3d", dr.lunch_time.integerValue];
+        //rest_time
+        l5.text = [NSString stringWithFormat:@"%3d", dr.rest_time.integerValue];
+    }
 }
 
 /*
@@ -156,18 +178,6 @@
      */
 }
 
-/**
- * 月末の日にちを取得する
- * @param NSDate
- * @return 月末の日にち
- */
--(NSInteger)getLastDay:(NSDate *)date
-{
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSRange range = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date];
-    return range.length;
-}
-
 //ヘッダー部分更新
 -(void)updateTableHeader
 {
@@ -203,6 +213,27 @@
 }
 
 - (IBAction)exportPdf:(id)sender {
+    PdfWriter *pw = [[PdfWriter alloc] init];
+    NSString *filePath = [pw exportPdf:self.baseDate];
+    NSLog(@"%@", filePath);
+    
+    [self interactFile:filePath];
+}
+
+-(void)interactFile:(NSString *)filePath
+{
+    NSURL *url = [NSURL fileURLWithPath:filePath];
+    if(url){
+        self.interactionController = [UIDocumentInteractionController interactionControllerWithURL:url];
+        self.interactionController.delegate = self;
+        
+        BOOL present = [self.interactionController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES];
+        if(!present){
+            //error
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー" message:@"PDFを開くことのできるアプリがありません。" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        }
+    }
 }
 
 //画面遷移

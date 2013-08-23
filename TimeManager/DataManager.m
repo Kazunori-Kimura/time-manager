@@ -302,8 +302,10 @@
         NSLog(@"NSManagedObjectContext save error");
     }
     
-    //TODO: アップロードフラグチェック
-    if(NO){
+    //アップロードフラグチェック
+    Setting *st = [SettingController loadUserDefaults];
+    
+    if(st.canUpload){
         //インジケータ表示
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         
@@ -325,19 +327,15 @@
 -(void) uploadData
 {
     @try {
+        //UserIDとPasswordを取得
+        Setting *st = [SettingController loadUserDefaults];
+        
         //更新データ取得条件
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"upload_flag ==  0 OR upload_flag == nil"];
         
-        //UserIDとPasswordを取得
-        SettingController *sd = [[SettingController alloc] init];
-        Setting *setting = [sd load];
-        
-        //plistからURL取得
-        NSBundle* bundle = [NSBundle mainBundle];
-        NSString* path = [bundle pathForResource:@"settings" ofType:@"plist"];
-        NSDictionary* settings = [NSDictionary dictionaryWithContentsOfFile:path];
         //JSON-RPC
-        DSJSONRPC *jsonRPC = [[DSJSONRPC alloc] initWithServiceEndpoint:[NSURL URLWithString:settings[@"web_app_url"]]];
+        DSJSONRPC *jsonRPC = [[DSJSONRPC alloc]
+                              initWithServiceEndpoint:[NSURL URLWithString:st.url]];
         
         //DailyReport
         NSMutableArray *items = [self getDailyReport: predicate];
@@ -345,8 +343,8 @@
             DailyReport *dailryReport = (DailyReport *) item;
             
             NSMutableDictionary *prm = [NSMutableDictionary dictionary];
-            [prm setObject:setting.partnerId forKey:@"user_id"];
-            [prm setObject:setting.password forKey:@"passwd"];
+            [prm setObject:st.partnerId forKey:@"user_id"];
+            [prm setObject:st.password forKey:@"passwd"];
             [prm setObject:[self convertNumber:dailryReport.project_id]
                     forKey:@"project_id"];
             [prm setObject:[self convertNumber:dailryReport.report_date]
@@ -383,8 +381,8 @@
             Report *rp = (Report *)item;
             
             NSMutableDictionary *prm = [NSMutableDictionary dictionary];
-            [prm setObject:setting.partnerId forKey:@"user_id"];
-            [prm setObject:setting.password forKey:@"passwd"];
+            [prm setObject:st.partnerId forKey:@"user_id"];
+            [prm setObject:st.password forKey:@"passwd"];
             [prm setObject:[self convertNumber:rp.project_id]
                     forKey:@"project_id"];
             [prm setObject:[self convertNumber:rp.report_id]
@@ -418,8 +416,8 @@
             Project *pr = (Project *)item;
             
             NSMutableDictionary *prm = [NSMutableDictionary dictionary];
-            [prm setObject:setting.partnerId forKey:@"user_id"];
-            [prm setObject:setting.password forKey:@"passwd"];
+            [prm setObject:st.partnerId forKey:@"user_id"];
+            [prm setObject:st.password forKey:@"passwd"];
             [prm setObject:[self convertNumber:pr.project_id]
                     forKey:@"project_id"];
             [prm setObject:[self convertString:pr.project_name]
@@ -444,9 +442,6 @@
                        }
                    }];
         } //end for
-        
-        //10秒待つ
-        [NSThread sleepForTimeInterval:10];
     }
     @catch (NSException *exception) {
         NSLog(@"%@", exception.description);

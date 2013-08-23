@@ -10,10 +10,17 @@
 
 @interface MyUtil : NSObject
 
++ (NSInteger)numberFromDate:(NSDate *)date;
 + (NSString *)stringMonthDay:(NSNumber *)dateValue;
 + (NSString *)stringHourMinute:(NSNumber *)timeValue;
 + (NSDateComponents *)dateComponentFromDate:(NSDate *)date;
 + (NSString *)stringWeekday:(NSDate *)date;
 + (NSDate *)initWithDayInterval:(NSInteger)days fromDate:(NSDate *)date;
++ (NSInteger)convertMinute:(NSNumber *)timeValue;
++ (NSString *)formatMinute:(NSInteger)minute;
++ (NSInteger)diffTime:(NSNumber *)startTime endTime:(NSNumber *)endTime
+           lunchTime:(NSNumber *)lunchTime restTime:(NSNumber *)restTime;
++ (NSString *)stringMonthDayFromDate:(NSDate *)date;
++ (NSInteger)getLastDay:(NSDate *)date;
 
 @end

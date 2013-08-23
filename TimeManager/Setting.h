@@ -13,9 +13,14 @@
 @property (nonatomic, copy) NSString *partnerId;
 @property (nonatomic, copy) NSString *partnerName;
 @property (nonatomic, copy) NSString *password;
-@property (nonatomic, copy) NSString *tel;
+
 @property (nonatomic, copy) NSString *mail;
 @property (nonatomic, copy) NSString *url;
 @property NSInteger lunchTime;
+@property BOOL canUpload;
+
+@property (nonatomic, copy) NSString *tel;
+@property (nonatomic, copy) NSString *naisen;
+@property (nonatomic, copy) NSString *yobidasi;
 
 @end

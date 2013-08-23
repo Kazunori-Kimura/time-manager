@@ -8,6 +8,11 @@
 
 #import "PdfWriter.h"
 #import "MyUtil.h"
+#import "SettingController.h"
+#import "Setting.h"
+#import "DataManager.h"
+#import "DailyReport.h"
+#import "Project.h"
 
 @implementation PdfWriter
 /**
@@ -38,32 +43,77 @@
     //背景画像をセット
     UIImage *image = [UIImage imageNamed:@"pdf_back.png"];
     CGPoint p1 = CGPointMake(0, 0);
+    [image drawAtPoint:p1];
     
-    //TODO: テキストを描画
-    /* テキスト描画位置
-     X      Y      項目名
-     96     32    年
-     430     32    月
-     64     76    パートナーID (ラベル)
-     110     76    パートナーID (値)
-     300     76    会社名
-     110     98    氏名
-     300     98    作業場所
-     420     86    連絡先
-     426    100    内線番号
-     506    100    呼出方
-     324    730    合計
-     458    730    責任者
-     20    row_height
-     62    156    月/日
-     94    156    曜日
-     112    156    開始時刻
-     172    156    退社時刻
-     230    156    昼休憩
-     268    156    昼以外の休憩
-     324    156    作業時間
-     406    156    作業内容
-     */
+    //UserDefaults取得
+    Setting *st = [SettingController loadUserDefaults];
+    //Project取得
+    DataManager *dm = [[DataManager alloc] init];
+    
+    Project *p;
+    NSMutableArray *pa = [dm getProjectById:1];
+    if(pa != nil && pa.count > 0){
+        p = (Project *)pa[0];
+    }else{
+        p = [dm createProject];
+    }
+
+    //年
+    [self drawText:[NSString stringWithFormat:@"%04d", comp.year] positionX:96 positionY:32];
+    //月
+    [self drawText:[NSString stringWithFormat:@"%02d", comp.month] positionX:430 positionY:32];
+    if(st.partnerId != nil || st.partnerId.length > 0){
+        //PartnetID設定時
+        [self drawText:@"パートナーID" positionX:64 positionY:76];
+        [self drawText:st.partnerId positionX:110 positionY:76];
+    }
+    //会社名
+    [self drawText:p.company_name positionX:300 positionY:76];
+    //氏名
+    [self drawText:st.partnerName positionX:110 positionY:98];
+    //作業場所
+    [self drawText:p.workspace positionX:300 positionY:98];
+    //連絡先
+    [self drawText:st.tel positionX:420 positionY:86];
+    //内線番号
+    [self drawText:st.naisen positionX:426 positionY:100];
+    //呼出方
+    [self drawText:st.yobidasi positionX:506 positionY:100];
+    //責任者
+    [self drawText:p.manager positionX:458 positionY:730];
+    
+    //合計時間(分)
+    NSInteger min = 0;
+    DailyReport *dr;
+    NSInteger lastDay = [MyUtil getLastDay:date];
+    for(NSInteger day=1; day <= lastDay; day++){
+        //対象日
+        NSDate *targetDate = [MyUtil initWithDayInterval: day-1 fromDate:date];
+        //月/日
+        [self drawText:[MyUtil stringMonthDayFromDate:targetDate] positionX:62 positionY:156 + 20 * (day - 1)];
+        //曜日
+        [self drawText:[MyUtil stringWeekday:targetDate] positionX:94 positionY:156 + 20 * (day - 1)];
+        
+        NSInteger reportDate = [MyUtil numberFromDate:targetDate];
+        NSMutableArray *arrDaily = [dm getDailyReportByReportDate:reportDate];
+        if(arrDaily != nil && arrDaily.count > 0){
+            dr = (DailyReport *)arrDaily[0];
+            //112    156    開始時刻
+            [self drawText:[MyUtil stringHourMinute:dr.start_time] positionX:112 positionY:156 + 20 * (day - 1)];
+            //172    156    退社時刻
+            [self drawText:[MyUtil stringHourMinute:dr.end_time] positionX:172 positionY:156 + 20 * (day - 1)];
+            //230    156    昼休憩
+            [self drawText:[MyUtil stringHourMinute:dr.lunch_time] positionX:230 positionY:156 + 20 * (day - 1)];
+            //268    156    昼以外の休憩
+            [self drawText:[MyUtil stringHourMinute:dr.rest_time] positionX:268 positionY:156 + 20 * (day - 1)];
+            //324    156    作業時間
+            NSInteger wt = [MyUtil diffTime:dr.start_time endTime:dr.end_time lunchTime:dr.lunch_time restTime:dr.rest_time];
+            min += wt;
+            [self drawText:[MyUtil formatMinute:wt] positionX:324 positionY:156 + 20 * (day - 1)];
+            //406    156    作業内容
+            [self drawText:dr.detail positionX:406 positionY:156 + 20 * (day - 1)];
+        }
+    }
     
     //PDFコンテキストを閉じる
     UIGraphicsEndPDFContext();

@@ -10,6 +10,6 @@
 #import "Setting.h"
 
 @interface SettingController : NSObject
--(BOOL)saveSetting:(Setting *)setting;
--(Setting *)load;
++(BOOL)saveUserDefaults:(Setting *)setting;
++(Setting *)loadUserDefaults;
 @end

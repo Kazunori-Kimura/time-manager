@@ -83,8 +83,7 @@
     }
     
     //共通設定取得
-    SettingController *sc = [[SettingController alloc] init];
-    self.setting = [sc load];
+    self.setting = [SettingController loadUserDefaults];
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,8 +7,17 @@
 //
 
 #import "ReportSettingsViewController.h"
+#import "Setting.h"
+#import "SettingController.h"
+#import "DataManager.h"
+#import "Project.h"
 
 @interface ReportSettingsViewController ()
+
+@property Setting *setting;
+@property Project *project;
+@property DataManager *dataManager;
+@property(nonatomic, strong) UITapGestureRecognizer *singleTap;
 
 @end
 
@@ -27,6 +36,22 @@
 {
     [super viewDidLoad];
 
+    //UserDefaults取得
+    self.setting = [SettingController loadUserDefaults];
+    //Project取得
+    self.dataManager = [[DataManager alloc] init];
+    NSMutableArray *arr = [self.dataManager getProjectById:1];
+    if(arr != nil && arr.count > 0){
+        self.project = (Project *)arr[0];
+    }else{
+        self.project = [self.dataManager createProject];
+    }
+    
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
+    self.singleTap.delegate = self;
+    self.singleTap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.singleTap];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -63,30 +88,52 @@
         if(indexPath.row == 0){
             //昼休憩
             cell = self.cellLunchTime;
+            self.textLunchTime.text = [NSString stringWithFormat:@"%d", self.setting.lunchTime];
         }else if(indexPath.row == 1){
             //勤務先
             cell = self.cellCompany;
+            if(self.project.company_name != nil){
+                self.textCompany.text = self.project.company_name;
+            }
         }else if(indexPath.row == 2){
             //作業場所
             cell = self.cellWorkspace;
+            if(self.project.workspace != nil){
+                self.textWorkplace.text = self.project.workspace;
+            }
         }else if(indexPath.row == 3){
             //責任者
             cell = self.cellCustomer;
+            if(self.project.manager != nil){
+                self.textManager.text = self.project.manager;
+            }
         }
     }else if(indexPath.section == 1){
         //section2
         if(indexPath.row == 0){
             //氏名
             cell = self.cellUserName;
+            if(self.setting.partnerName != nil){
+                self.textUserName.text = self.setting.partnerName;
+            }
         }else if(indexPath.row == 1){
             //電話番号
             cell = self.cellTel;
+            if(self.setting.tel != nil){
+                self.textTel.text = self.setting.tel;
+            }
         }else if(indexPath.row == 2){
             //内線番号
             cell = self.cellTel2;
+            if(self.setting.naisen != nil){
+                self.textNaisen.text = self.setting.naisen;
+            }
         }else if(indexPath.row == 3){
             //呼出方
             cell = self.cellTel3;
+            if(self.setting.yobidasi != nil){
+                self.textYobidasi.text = self.setting.yobidasi;
+            }
         }
     }
     
@@ -148,5 +195,21 @@
 }
 
 - (IBAction)saveSetting:(id)sender {
+    //各フィールドの値を取得
+    self.setting.lunchTime = [self.textLunchTime.text integerValue];
+    self.setting.tel = self.textTel.text;
+    self.setting.naisen = self.textNaisen.text;
+    self.setting.yobidasi = self.textYobidasi.text;
+    [SettingController saveUserDefaults:self.setting];
+    
+    self.project.company_name = self.textCompany.text;
+    self.project.workspace = self.textWorkplace.text;
+    self.project.manager = self.textManager.text;
+    [self.dataManager saveData];
 }
+
+-(void)onSingleTap:(UITapGestureRecognizer *)recognizer {
+    [self.view endEditing:YES];
+}
+
 @end
