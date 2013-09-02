@@ -55,8 +55,8 @@
                        [MyUtil stringWeekday:self.today]];
     
     //CoreDataのキー
-    self.report_date = comp.year * 10000 + comp.month * 100 * comp.day;
-    
+    self.report_date = comp.year * 10000 + comp.month * 100 + comp.day;
+    //NSLog(@"today = %d", self.report_date);
     //disable時の画像をセット
     [buttonArrive setImage:[UIImage imageNamed:@"button1-2.png"] forState:UIControlStateDisabled];
     [buttonLeave setImage:[UIImage imageNamed:@"button2-2.png"] forState:UIControlStateDisabled];
@@ -127,6 +127,11 @@
         self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
     }
     self.dailyReport.end_time = [NSNumber numberWithInt:comp.hour * 100 + comp.minute];
+    
+    //TODO 昼休憩を計算
+    // 作業時間が昼休憩時間より大きい場合は昼休憩をセット
+    // 作業時間より休憩時間が大きくなる場合は 0 とする
+    
     [self.dm saveData];
 }
 

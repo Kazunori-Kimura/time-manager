@@ -18,5 +18,11 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellDetail;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellLunchTime;
 
+@property (weak, nonatomic) IBOutlet UITextField *textStartTime;
+@property (weak, nonatomic) IBOutlet UITextField *textEndTime;
+@property (weak, nonatomic) IBOutlet UITextField *textLunchTime;
+@property (weak, nonatomic) IBOutlet UITextField *textRestTime;
+@property (weak, nonatomic) IBOutlet UITextField *textComment;
+
 - (IBAction)saveData:(id)sender;
 @end

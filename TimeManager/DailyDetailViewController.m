@@ -7,11 +7,17 @@
 //
 
 #import "DailyDetailViewController.h"
+#import "MyUtil.h"
+#import "DataManager.h"
+#import "DailyReport.h"
 
 @interface DailyDetailViewController ()
 
 //更新対象の日 (CoreDataのキー)
 @property NSInteger report_date;
+
+@property DataManager *dataManager;
+@property DailyReport *dataDay;
 
 @end
 
@@ -35,6 +41,17 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.report_date = [MyUtil numberFromDate:self.today];
+    NSLog(@"%d", self.report_date);
+    
+    //DataManager準備
+    self.dataManager = [[DataManager alloc] init];
+    //全画面から引き渡された日付をもとにデータを取得
+    NSMutableArray *arr = [self.dataManager getDailyReportByReportDate:self.report_date];
+    if(arr != nil && arr.count > 0){
+        self.dataDay = (DailyReport *) arr[0];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,25 +126,35 @@
 - (void)updateCell:(UITableViewCell *)cell cellIdentifier:(NSString *)identifier {
     if([identifier isEqualToString:@"cellDate"]){
         [self updateCellDate:cell];
+    }else if([identifier isEqualToString:@"cellStartTime"]){
+        [self updateCellStartTime:cell];
     }
 }
 
-//cellDate更新
+/**
+ * cellDate更新
+ */
 - (void)updateCellDate:(UITableViewCell *)cell {
     //ラベル取得
     UILabel *l = (UILabel *)[cell viewWithTag:1];
-    //前画面から渡された日付
-    NSCalendar *c = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [c components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:self.today];
-    NSArray *w = [NSArray arrayWithObjects:@"", @"日", @"月", @"火", @"水", @"木", @"金", @"土", nil];
+    l.text = [MyUtil stringFromDate:self.today];
     
-    l.text = [NSString stringWithFormat:@"%04d/%02d/%02d (%@)", comp.year, comp.month, comp.day, w[comp.weekday]];
-    
+    NSDateComponents *comp = [MyUtil dateComponentFromDate:self.today];
     if(comp.weekday == 1){
         //日曜日
         l.textColor = [UIColor redColor];
     }else if(comp.weekday == 7){
+        //土曜日
         l.textColor = [UIColor blueColor];
+    }
+}
+
+/**
+ * 出勤
+ */
+- (void)updateCellStartTime:(UITableViewCell *)cell {
+    if(self.dataDay != nil){
+        self.textStartTime.text = [MyUtil stringHourMinute:self.dataDay.start_time];
     }
 }
 

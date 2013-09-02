@@ -11,9 +11,21 @@
 @implementation MyUtil
 
 /**
+ * 日付を文字列表記する
+ * @param date
+ * @return {NSString} yyyy/mm/dd (w)
+ */
++ (NSString *) stringFromDate:(NSDate *)date
+{
+    NSDateComponents *c = [MyUtil dateComponentFromDate:date];
+    NSString *d = [MyUtil stringWeekday:date];
+    return [NSString stringWithFormat:@"%4d/%02d/%02d (%@)", c.year, c.month, c.day, d];
+}
+
+/**
  * 日付から8桁の数字を取得する
  * @param date
- * @return YYYYMMDD
+ * @return {NSInteger} YYYYMMDD
  */
 + (NSInteger)numberFromDate:(NSDate *)date
 {
@@ -48,6 +60,33 @@
     NSString *ret = [NSString stringWithFormat:@"%@:%@",
                      [val substringWithRange: NSMakeRange(0, 2)],
                      [val substringWithRange: NSMakeRange(2, 2)]];
+    return ret;
+}
+
+/**
+ * "HH:MM"から4桁の数字を取得する
+ * @param {NSString} HH:MM
+ * @return {NSNumber} HHMM
+ */
++(NSNumber *)numberFromTimeString:(NSString *)timeValue
+{
+    NSNumber *ret = nil;
+    //HH:MM形式かどうかをチェック
+    NSString *timePattern = @"([0-9]{1,2})¥¥:([0-9]{1,2})";
+    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:timePattern
+                                                                         options:0
+                                                                           error:nil];
+    NSTextCheckingResult *match = [reg firstMatchInString:timeValue
+                                                  options:0
+                                                    range:NSMakeRange(0, timeValue.length)];
+    
+    if(match.numberOfRanges == 3){
+        NSString *hour = [timeValue substringWithRange:[match rangeAtIndex:1]];
+        NSString *minute = [timeValue substringWithRange:[match rangeAtIndex:2]];
+        NSInteger val = hour.intValue * 100 + minute.intValue;
+        ret = [NSNumber numberWithInteger:val];
+    }
+    
     return ret;
 }
 

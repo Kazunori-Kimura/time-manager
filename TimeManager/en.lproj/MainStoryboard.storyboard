@@ -228,7 +228,6 @@
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="DD (W)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlE-fs-AoJ">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="70" id="2am-2e-THk"/>
                                                 <constraint firstAttribute="height" constant="21" id="MHL-0s-Yyt"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -251,17 +250,17 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-ws-Xg6">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="0分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-ws-Xg6">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="Z19-vI-Sxc"/>
+                                                <constraint firstAttribute="width" constant="32" id="aEz-Cb-Mj3"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L38-39-NUJ">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="0分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L38-39-NUJ">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="fnl-hn-UJr"/>
+                                                <constraint firstAttribute="width" constant="34" id="ekH-56-HIA"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -276,13 +275,14 @@
                                     <constraint firstItem="GVq-nq-IdL" firstAttribute="baseline" secondItem="NlE-fs-AoJ" secondAttribute="baseline" type="default" id="7af-He-bRp"/>
                                     <constraint firstItem="L38-39-NUJ" firstAttribute="top" secondItem="sVg-ws-Xg6" secondAttribute="top" type="default" id="9wt-wc-UAD"/>
                                     <constraint firstItem="L38-39-NUJ" firstAttribute="baseline" secondItem="sVg-ws-Xg6" secondAttribute="baseline" type="default" id="FCa-QM-20r"/>
+                                    <constraint firstItem="L38-39-NUJ" firstAttribute="leading" secondItem="sVg-ws-Xg6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ib6-6P-C7h"/>
                                     <constraint firstItem="6TC-8Z-tfy" firstAttribute="top" secondItem="GVq-nq-IdL" secondAttribute="top" type="default" id="MUO-LO-2C2"/>
                                     <constraint firstItem="sVg-ws-Xg6" firstAttribute="leading" secondItem="6TC-8Z-tfy" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="UGD-8z-Hdk"/>
+                                    <constraint firstAttribute="trailing" secondItem="L38-39-NUJ" secondAttribute="trailing" constant="48" id="bT9-13-gIx"/>
                                     <constraint firstItem="GVq-nq-IdL" firstAttribute="top" secondItem="NlE-fs-AoJ" secondAttribute="top" type="default" id="gDd-yW-DPr"/>
                                     <constraint firstItem="sVg-ws-Xg6" firstAttribute="top" secondItem="6TC-8Z-tfy" secondAttribute="top" type="default" id="hRs-PT-3gV"/>
                                     <constraint firstItem="6TC-8Z-tfy" firstAttribute="leading" secondItem="GVq-nq-IdL" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="myH-xj-4bw"/>
                                     <constraint firstItem="6TC-8Z-tfy" firstAttribute="baseline" secondItem="GVq-nq-IdL" secondAttribute="baseline" type="default" id="p6h-su-3vB"/>
-                                    <constraint firstItem="L38-39-NUJ" firstAttribute="leading" secondItem="sVg-ws-Xg6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="tnj-HQ-Uth"/>
                                     <constraint firstItem="GVq-nq-IdL" firstAttribute="leading" secondItem="NlE-fs-AoJ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="wtk-Cw-tEZ"/>
                                     <constraint firstItem="sVg-ws-Xg6" firstAttribute="baseline" secondItem="6TC-8Z-tfy" secondAttribute="baseline" type="default" id="ybY-TS-NGi"/>
                                 </constraints>
@@ -878,6 +878,11 @@
                         <outlet property="cellLunchTime" destination="PeG-SQ-08o" id="JZd-su-XlX"/>
                         <outlet property="cellRestTime" destination="MgA-0w-svt" id="5g5-S7-Ygd"/>
                         <outlet property="cellStartTime" destination="3Br-Bj-EBS" id="Sm5-Bh-jan"/>
+                        <outlet property="textComment" destination="UAi-9T-tHc" id="auH-dN-hDq"/>
+                        <outlet property="textEndTime" destination="1mU-DC-beo" id="HgF-70-vft"/>
+                        <outlet property="textLunchTime" destination="wnp-Z2-L0L" id="VDj-Sc-Laf"/>
+                        <outlet property="textRestTime" destination="duu-1P-kVm" id="MWz-iH-14Y"/>
+                        <outlet property="textStartTime" destination="KUE-nh-FcG" id="lca-qY-71a"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyj-Po-4OO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -895,6 +900,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WjL-fY-3u1"/>
+        <segue reference="oHa-dU-9qA"/>
     </inferredMetricsTieBreakers>
 </document>

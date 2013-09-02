@@ -10,9 +10,11 @@
 
 @interface MyUtil : NSObject
 
++ (NSString *) stringFromDate:(NSDate *)date;
 + (NSInteger)numberFromDate:(NSDate *)date;
 + (NSString *)stringMonthDay:(NSNumber *)dateValue;
 + (NSString *)stringHourMinute:(NSNumber *)timeValue;
++ (NSNumber *)numberFromTimeString:(NSString *)timeValue;
 + (NSDateComponents *)dateComponentFromDate:(NSDate *)date;
 + (NSString *)stringWeekday:(NSDate *)date;
 + (NSDate *)initWithDayInterval:(NSInteger)days fromDate:(NSDate *)date;

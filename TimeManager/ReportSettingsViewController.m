@@ -212,4 +212,15 @@
     [self.view endEditing:YES];
 }
 
+/*
+// メッセージ入力終了処理
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+ 　　// the user pressed the "Done" button, so dismiss the keyboard
+ 　　// キーボードを非表示にする
+ 　　[textField resignFirstResponder];
+ 　　return YES;
+}
+ */
+
 @end

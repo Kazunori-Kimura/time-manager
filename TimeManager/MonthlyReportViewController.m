@@ -14,7 +14,7 @@
 #import "PdfWriter.h"
 
 @interface MonthlyReportViewController ()
-@property DataManager *dataManager;
+@property (nonatomic, retain) DataManager *dataManager;
 @end
 
 @implementation MonthlyReportViewController
@@ -113,6 +113,7 @@
     
     //CoreDataから該当日のデータを取得
     NSMutableArray *arr = [self.dataManager getDailyReportByReportDate:[MyUtil numberFromDate:d]];
+    //NSLog(@"updateCell: %d, %d", [MyUtil numberFromDate:d], arr.count);
     if(arr != nil && arr.count > 0){
         DailyReport *dr = (DailyReport *) arr[0];
         //start_time
@@ -120,9 +121,9 @@
         //end_time
         l3.text = [MyUtil stringHourMinute:dr.end_time];
         //lunch_time
-        l4.text = [NSString stringWithFormat:@"%3d", dr.lunch_time.integerValue];
+        l4.text = [NSString stringWithFormat:@"%3d分", dr.lunch_time.integerValue];
         //rest_time
-        l5.text = [NSString stringWithFormat:@"%3d", dr.rest_time.integerValue];
+        l5.text = [NSString stringWithFormat:@"%3d分", dr.rest_time.integerValue];
     }
 }
 
