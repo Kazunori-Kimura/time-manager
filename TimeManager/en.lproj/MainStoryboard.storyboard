@@ -646,6 +646,26 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="E5W-cx-wNp">
+                            <rect key="frame" x="0.0" y="308" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scG-4q-6j0">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="Ih7-ub-ATg"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="scG-4q-6j0" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="DjA-JA-vmU"/>
+                                <constraint firstItem="scG-4q-6j0" firstAttribute="leading" secondItem="E5W-cx-wNp" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="edi-3C-hcg"/>
+                                <constraint firstItem="scG-4q-6j0" firstAttribute="top" secondItem="E5W-cx-wNp" secondAttribute="top" constant="11" id="ijt-Lx-Icr"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="HhH-0S-hD2">
                                 <cells>
@@ -692,12 +712,12 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HHMM" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUE-nh-FcG">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HH:MM" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUE-nh-FcG">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="ID1-ZA-zMC"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -724,12 +744,12 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HHMM" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1mU-DC-beo">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HH:MM" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1mU-DC-beo">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="4bG-Wb-24f"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -756,7 +776,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnp-Z2-L0L">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnp-Z2-L0L">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="kMf-6G-kmM"/>
                                                     </constraints>
@@ -796,7 +816,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="duu-1P-kVm">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="duu-1P-kVm">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="esa-Nr-uws"/>
                                                     </constraints>
@@ -847,7 +867,6 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="UAi-9T-tHc" firstAttribute="centerY" secondItem="ftq-7g-pzW" secondAttribute="centerY" type="default" id="Hd3-Yg-hrb"/>
-                                            <constraint firstItem="caQ-Oj-LQX" firstAttribute="top" secondItem="ftq-7g-pzW" secondAttribute="top" constant="11" id="SDM-xU-S4i"/>
                                             <constraint firstItem="caQ-Oj-LQX" firstAttribute="leading" secondItem="ftq-7g-pzW" secondAttribute="leading" constant="30" id="lwW-Eb-5Qv"/>
                                             <constraint firstItem="UAi-9T-tHc" firstAttribute="leading" secondItem="caQ-Oj-LQX" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="qYT-xv-rTC"/>
                                             <constraint firstItem="caQ-Oj-LQX" firstAttribute="baseline" secondItem="UAi-9T-tHc" secondAttribute="baseline" type="default" id="xev-B7-zzP"/>
@@ -878,6 +897,7 @@
                         <outlet property="cellLunchTime" destination="PeG-SQ-08o" id="JZd-su-XlX"/>
                         <outlet property="cellRestTime" destination="MgA-0w-svt" id="5g5-S7-Ygd"/>
                         <outlet property="cellStartTime" destination="3Br-Bj-EBS" id="Sm5-Bh-jan"/>
+                        <outlet property="labelValidateMessage" destination="scG-4q-6j0" id="cg4-iV-OhJ"/>
                         <outlet property="textComment" destination="UAi-9T-tHc" id="auH-dN-hDq"/>
                         <outlet property="textEndTime" destination="1mU-DC-beo" id="HgF-70-vft"/>
                         <outlet property="textLunchTime" destination="wnp-Z2-L0L" id="VDj-Sc-Laf"/>

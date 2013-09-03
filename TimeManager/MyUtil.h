@@ -24,5 +24,6 @@
            lunchTime:(NSNumber *)lunchTime restTime:(NSNumber *)restTime;
 + (NSString *)stringMonthDayFromDate:(NSDate *)date;
 + (NSInteger)getLastDay:(NSDate *)date;
++ (BOOL)validateString:(NSString *)string withPattern:(NSString *)pattern;
 
 @end

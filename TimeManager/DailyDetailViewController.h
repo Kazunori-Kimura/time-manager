@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DailyDetailViewController : UITableViewController
+@interface DailyDetailViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 @property NSDate *today;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellDate;
@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textLunchTime;
 @property (weak, nonatomic) IBOutlet UITextField *textRestTime;
 @property (weak, nonatomic) IBOutlet UITextField *textComment;
+@property (weak, nonatomic) IBOutlet UILabel *labelValidateMessage;
 
 - (IBAction)saveData:(id)sender;
 @end

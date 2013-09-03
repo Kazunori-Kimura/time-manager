@@ -19,6 +19,9 @@
 @property DataManager *dataManager;
 @property DailyReport *dataDay;
 
+//タップ対応
+@property(nonatomic, strong) UITapGestureRecognizer *singleTap;
+
 @end
 
 @implementation DailyDetailViewController
@@ -42,6 +45,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    //タップ対応
+    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
+    self.singleTap.delegate = self;
+    self.singleTap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.singleTap];
+    
+    //日付取得
     self.report_date = [MyUtil numberFromDate:self.today];
     NSLog(@"%d", self.report_date);
     
@@ -122,12 +132,22 @@
     return cell;
 }
 
-//Cell更新
+/**
+ * Cell更新
+ */
 - (void)updateCell:(UITableViewCell *)cell cellIdentifier:(NSString *)identifier {
     if([identifier isEqualToString:@"cellDate"]){
         [self updateCellDate:cell];
     }else if([identifier isEqualToString:@"cellStartTime"]){
         [self updateCellStartTime:cell];
+    }else if([identifier isEqualToString:@"cellEndTime"]){
+        [self updateCellEndTime:cell];
+    }else if([identifier isEqualToString:@"cellLunchTime"]){
+        [self updateCellLunchTime:cell];
+    }else if([identifier isEqualToString:@"cellRestTime"]){
+        [self updateCellRestTime:cell];
+    }else if([identifier isEqualToString:@"cellDetail"]){
+        [self updateCellComment:cell];
     }
 }
 
@@ -158,7 +178,41 @@
     }
 }
 
+/**
+ * 退勤
+ */
+- (void)updateCellEndTime:(UITableViewCell *)cell {
+    if(self.dataDay != nil){
+        self.textEndTime.text = [MyUtil stringHourMinute:self.dataDay.end_time];
+    }
+}
 
+/**
+ * 昼休憩
+ */
+- (void)updateCellLunchTime:(UITableViewCell *)cell {
+    if(self.dataDay != nil){
+        self.textLunchTime.text = self.dataDay.lunch_time.stringValue;
+    }
+}
+
+/**
+ * 昼以外の休憩
+ */
+-(void)updateCellRestTime:(UITableViewCell *)cell {
+    if(self.dataDay != nil){
+        self.textRestTime.text = self.dataDay.rest_time.stringValue;
+    }
+}
+
+/**
+ * 作業内容
+ */
+-(void)updateCellComment:(UITableViewCell *)cell {
+    if(self.dataDay != nil){
+        self.textComment.text = self.dataDay.detail;
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -212,6 +266,73 @@
      */
 }
 
+/**
+ * 入力値のチェック
+ */
+-(BOOL)validateInputData
+{
+    BOOL ret = YES;
+    NSString *msg;
+    //開始時刻
+    if (! [MyUtil validateString:self.textStartTime.text withPattern:@"^[0-9]{1,2}:[0-9]{1,2}$"]){
+        ret = NO;
+        msg = @"出勤時刻に誤りがあります。";
+    }
+    //終了時刻
+    else if (! [MyUtil validateString:self.textEndTime.text withPattern:@"^[0-9]{1,2}:[0-9]{1,2}$"]){
+        ret = NO;
+        msg = @"退勤時刻に誤りがあります。";
+    }
+    //昼休憩
+    else if(! [MyUtil validateString:self.textLunchTime.text withPattern:@"^[0-9]+$"]){
+        ret = NO;
+        msg = @"昼休憩に誤りがあります。";
+    }
+    //昼以外の休憩
+    else if(! [MyUtil validateString:self.textRestTime.text withPattern:@"^[0-9]+$"]){
+        ret = NO;
+        msg = @"昼以外の休憩に誤りがあります。";
+    }
+    
+    self.labelValidateMessage.text = msg;
+    return ret;
+}
+
+/**
+ * 入力データを取得してCoreDataを更新する
+ */
+-(void)updateDailyReport
+{
+    if(self.dataDay == nil){
+        //DailyReport作成
+        self.dataDay = [self.dataManager createDailyReport];
+        self.dataDay.report_date = [NSNumber numberWithInt:self.report_date];
+    }
+    //出勤時刻
+    self.dataDay.start_time = [MyUtil numberFromTimeString:self.textStartTime.text];
+    //退勤時刻
+    self.dataDay.end_time = [MyUtil numberFromTimeString:self.textEndTime.text];
+    //昼休憩
+    self.dataDay.lunch_time = [NSNumber numberWithInteger:self.textLunchTime.text.integerValue];
+    //休憩時間
+    self.dataDay.rest_time = [NSNumber numberWithInteger:self.textRestTime.text.integerValue];
+    //作業内容
+    self.dataDay.detail = self.textComment.text;
+}
+
 - (IBAction)saveData:(id)sender {
+    if([self validateInputData]){
+        //データ取得処理
+        [self updateDailyReport];
+        //CoreData保存
+        [self.dataManager saveData];
+        
+        self.labelValidateMessage.text = @"保存しました。";
+    }
+}
+
+//タップ時の処理
+-(void)onSingleTap:(UITapGestureRecognizer *)recognizer {
+    [self.view endEditing:YES];
 }
 @end

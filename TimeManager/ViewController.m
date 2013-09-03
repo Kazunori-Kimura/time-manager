@@ -63,6 +63,8 @@
     
     //CoreData
     self.dm = [[DataManager alloc] init];
+    //TODO: Projectがなければ作成する
+    
     //DailyReportを取得
     NSMutableArray *results = [self.dm getDailyReportByReportDate:self.report_date];
     if(results != nil && results.count > 0){

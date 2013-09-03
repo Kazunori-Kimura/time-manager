@@ -72,7 +72,7 @@
 {
     NSNumber *ret = nil;
     //HH:MM形式かどうかをチェック
-    NSString *timePattern = @"([0-9]{1,2})¥¥:([0-9]{1,2})";
+    NSString *timePattern = @"([0-9]{1,2}):([0-9]{1,2})";
     NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:timePattern
                                                                          options:0
                                                                            error:nil];
@@ -189,6 +189,28 @@
     NSInteger e = [MyUtil convertMinute:endTime];
     NSInteger workTime = e - s - (lunchTime.integerValue + restTime.integerValue);
     return workTime;
+}
+
+/**
+ * 入力文字がパターンと一致するかを判定する (正規表現)
+ * @param validateString 判定対象文字列
+ * @param pattern 正規表現文字列
+ * @return BOOL
+ */
++ (BOOL)validateString:(NSString *)string withPattern:(NSString *)pattern
+{
+    //NSLog(@"%@ - %@", string, pattern);
+    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                         options:NSRegularExpressionCaseInsensitive
+                                                                           error:nil];
+    NSRange matchRange = [reg rangeOfFirstMatchInString:string
+                                                options:0
+                                                  range:NSMakeRange(0, string.length)];
+    BOOL valid = NO;
+    if(matchRange.location != NSNotFound){
+        valid = YES;
+    }
+    return valid;
 }
 
 @end
