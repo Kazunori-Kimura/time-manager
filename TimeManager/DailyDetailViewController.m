@@ -327,6 +327,7 @@
         //CoreData保存
         [self.dataManager saveData];
         
+        self.labelValidateMessage.textColor = [UIColor greenColor];
         self.labelValidateMessage.text = @"保存しました。";
     }
 }

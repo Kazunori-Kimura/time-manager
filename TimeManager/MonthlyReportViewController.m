@@ -111,6 +111,8 @@
     l1.text = [NSString stringWithFormat:@"%02d (%@)", comp.day, [MyUtil stringWeekday:d]];
     l1.textColor = fontColor;
     
+    //NSLog(@"%d", [MyUtil numberFromDate:d]);
+    
     //CoreDataから該当日のデータを取得
     NSMutableArray *arr = [self.dataManager getDailyReportByReportDate:[MyUtil numberFromDate:d]];
     //NSLog(@"updateCell: %d, %d", [MyUtil numberFromDate:d], arr.count);
@@ -124,6 +126,11 @@
         l4.text = [NSString stringWithFormat:@"%3d分", dr.lunch_time.integerValue];
         //rest_time
         l5.text = [NSString stringWithFormat:@"%3d分", dr.rest_time.integerValue];
+    }else{
+        l2.text = @"--:--";
+        l3.text = @"--:--";
+        l4.text = @"0";
+        l5.text = @"0";
     }
 }
 

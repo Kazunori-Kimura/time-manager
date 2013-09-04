@@ -11,6 +11,7 @@
 #import "DailyDetailViewController.h"
 #import "DataManager.h"
 #import "DailyReport.h"
+#import "Project.h"
 #import "MyUtil.h"
 #import "Setting.h"
 #import "SettingController.h"
@@ -23,6 +24,7 @@
 @property NSInteger report_date;
 
 @property DailyReport *dailyReport;
+@property Project *project;
 @property (nonatomic, retain) DataManager *dm;
 @property Setting *setting;
 
@@ -63,7 +65,13 @@
     
     //CoreData
     self.dm = [[DataManager alloc] init];
-    //TODO: Projectがなければ作成する
+    //Projectがなければ作成する
+    NSMutableArray *pa = [self.dm getProjectById:1];
+    if(pa != nil && pa.count > 0){
+        self.project = (Project *)pa[0];
+    }else{
+        self.project = [self.dm createProject];
+    }
     
     //DailyReportを取得
     NSMutableArray *results = [self.dm getDailyReportByReportDate:self.report_date];
@@ -107,9 +115,16 @@
     if(self.dailyReport == nil){
         self.dailyReport = [self.dm createDailyReport];
         self.dailyReport.report_date = [NSNumber numberWithInt:self.report_date];
-        self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+        //self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
     }
     self.dailyReport.start_time = [NSNumber numberWithInt:comp.hour * 100 + comp.minute];
+    
+    NSInteger st = [MyUtil convertMinute:self.dailyReport.start_time];
+    NSInteger et = [MyUtil convertMinute:self.dailyReport.end_time];
+    if(self.setting.lunchTime < (et - st)){
+        self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+    }
+    
     [self.dm saveData];
 }
 
@@ -126,13 +141,18 @@
     if(self.dailyReport == nil){
         self.dailyReport = [self.dm createDailyReport];
         self.dailyReport.report_date = [NSNumber numberWithInt:self.report_date];
-        self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+        //self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
     }
     self.dailyReport.end_time = [NSNumber numberWithInt:comp.hour * 100 + comp.minute];
     
     //TODO 昼休憩を計算
     // 作業時間が昼休憩時間より大きい場合は昼休憩をセット
     // 作業時間より休憩時間が大きくなる場合は 0 とする
+    NSInteger st = [MyUtil convertMinute:self.dailyReport.start_time];
+    NSInteger et = [MyUtil convertMinute:self.dailyReport.end_time];
+    if(self.setting.lunchTime < (et - st)){
+        self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+    }
     
     [self.dm saveData];
 }

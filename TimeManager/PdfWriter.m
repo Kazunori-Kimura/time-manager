@@ -59,8 +59,7 @@ typedef enum textAlign : NSUInteger {
                           stringWithFormat:@"Report_%04d-%02d.pdf",
                           comp.year, comp.month];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(
-                                                         NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
     NSString *pdfPath = [path stringByAppendingPathComponent: fileName];
     
@@ -81,6 +80,10 @@ typedef enum textAlign : NSUInteger {
     }else{
         self.project = [self.dataManager createProject];
     }
+    
+    //基準日設定
+    self.baseDate = date;
+    self.sumTime = 0;
     
     //罫線
     [self drawTableBorder];
@@ -169,56 +172,63 @@ typedef enum textAlign : NSUInteger {
 - (void) drawTableHeader
 {
     NSDateComponents *comp = [MyUtil dateComponentFromDate:self.baseDate];
-    
+    NSInteger y = comp.year;
+    NSInteger m = comp.month;
+    NSLog(@"%d/%d", y, m);
     //年月取得
-    [self drawText:[NSString stringWithFormat:@"%04d年 月間報告書 (%d月度)",comp.year, comp.month]
-        fontOfSize:14 startX:72 startY:72 endX:540 endY:108
+    [self drawText:[NSString stringWithFormat:@"%04d年 月間報告書 (%d月度)", y, m]
+        fontOfSize:16 startX:72 startY:72 endX:540 endY:108
      verticalAlign:kVerticalMiddle textAlign:kAlignCenter];
     
     if(![self.setting.partnerId isEqualToString:@""]){
     
         //partnerId
-        [self drawText:@"パートナーNo:" fontOfSize:9
+        [self drawText:@"ﾊﾟｰﾄﾅｰNo:"
+            fontOfSize:8
                 startX:72 startY:108 endX:124 endY:125
          verticalAlign:kVerticalMiddle textAlign:kAlignCenter];
         
         [self drawText:self.setting.partnerId
-            fontOfSize:9
+            fontOfSize:8
                 startX:124 startY:108 endX:228 endY:125
          verticalAlign:kVerticalMiddle textAlign:kAlignLeft];
     }
     
-    [self drawText:@"契約先会社名:" fontOfSize:9
+    [self drawText:@"契約先会社名:"
+        fontOfSize:8
             startX:228 startY:108 endX:290 endY:125
      verticalAlign:kVerticalMiddle textAlign:kAlignCenter];
     
     //Project情報取得
     [self drawText:self.project.company_name
-        fontOfSize:9
+        fontOfSize:8
             startX:294 startY:108 endX:384 endY:125
      verticalAlign:kVerticalMiddle textAlign:kAlignLeft];
     
-    [self drawText:@"氏名:" fontOfSize:9
+    [self drawText:@"氏名:"
+        fontOfSize:8
             startX:72 startY:125 endX:124 endY:142
      verticalAlign:kVerticalMiddle textAlign:kAlignCenter];
     
     //氏名取得
     [self drawText:self.setting.partnerName
-        fontOfSize:9
+        fontOfSize:8
             startX:124 startY:125 endX:200 endY:142
      verticalAlign:kVerticalMiddle textAlign:kAlignLeft];
     
-    [self drawText:@"印" fontOfSize:8
+    [self drawText:@"印"
+        fontOfSize:8
             startX:200 startY:125 endX:228 endY:142
      verticalAlign:kVerticalMiddle textAlign:kAlignCenter];
     
-    [self drawText:@"作業場所名称:" fontOfSize:9
+    [self drawText:@"作業場所名称:"
+        fontOfSize:8
             startX:228 startY:125 endX:290 endY:142
      verticalAlign:kVerticalMiddle textAlign:kAlignCenter];
     
     //作業場所
     [self drawText:self.project.workspace
-        fontOfSize:9
+        fontOfSize:8
             startX:294 startY:125 endX:384 endY:142
      verticalAlign:kVerticalMiddle textAlign:kAlignLeft];
     
@@ -232,16 +242,16 @@ typedef enum textAlign : NSUInteger {
             startX:384 startY:119 endX:540 endY:131
      verticalAlign:kVerticalMiddle textAlign:kAlignLeft];
     
-    NSString *tel2 = @"    ";
-    NSString *tel3 = @"    ";
-    if(self.setting.naisen != nil && ![self.setting.naisen isEqualToString:@""]){
-        tel2 = self.setting.naisen;
+    NSString *tel2 = @"";
+    NSString *tel3 = @"";
+    if(self.setting.naisen != nil && self.setting.naisen.length > 0){
+        tel2 = [NSString stringWithFormat:@"(内) %@", self.setting.naisen];
     }
-    if(self.setting.yobidasi != nil && ![self.setting.yobidasi isEqualToString:@""]){
-        tel3 = self.setting.yobidasi;
+    if(self.setting.yobidasi != nil && self.setting.yobidasi.length > 0){
+        tel3 = [NSString stringWithFormat:@"呼出方 %@", self.setting.yobidasi];
     }
     
-    [self drawText:[NSString stringWithFormat:@"(内) %@ 呼出方 %@", tel2, tel3]
+    [self drawText:[NSString stringWithFormat:@"%@ %@", tel2, tel3]
         fontOfSize:8
             startX:384 startY:131 endX:540 endY:142
      verticalAlign:kVerticalMiddle textAlign:kAlignLeft];
