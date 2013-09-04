@@ -93,8 +93,7 @@
     UILabel *l1 = (UILabel*)[cell viewWithTag:1]; //day (w)
     UILabel *l2 = (UILabel*)[cell viewWithTag:2]; //start_time
     UILabel *l3 = (UILabel*)[cell viewWithTag:3]; //end_time
-    UILabel *l4 = (UILabel*)[cell viewWithTag:4]; //lunch_time
-    UILabel *l5 = (UILabel*)[cell viewWithTag:5]; //rest_time
+    UILabel *l4 = (UILabel*)[cell viewWithTag:4]; //work_time
     
     NSDate *d = [MyUtil initWithDayInterval:rowIndex fromDate:self.baseDate];
     NSDateComponents *comp = [MyUtil dateComponentFromDate:d];
@@ -111,8 +110,6 @@
     l1.text = [NSString stringWithFormat:@"%02d (%@)", comp.day, [MyUtil stringWeekday:d]];
     l1.textColor = fontColor;
     
-    //NSLog(@"%d", [MyUtil numberFromDate:d]);
-    
     //CoreDataから該当日のデータを取得
     NSMutableArray *arr = [self.dataManager getDailyReportByReportDate:[MyUtil numberFromDate:d]];
     //NSLog(@"updateCell: %d, %d", [MyUtil numberFromDate:d], arr.count);
@@ -122,15 +119,14 @@
         l2.text = [MyUtil stringHourMinute:dr.start_time];
         //end_time
         l3.text = [MyUtil stringHourMinute:dr.end_time];
-        //lunch_time
-        l4.text = [NSString stringWithFormat:@"%3d分", dr.lunch_time.integerValue];
-        //rest_time
-        l5.text = [NSString stringWithFormat:@"%3d分", dr.rest_time.integerValue];
+        //work_time
+        NSInteger workTime = [MyUtil diffTime:dr.start_time endTime:dr.end_time
+                                    lunchTime:dr.lunch_time restTime:dr.rest_time];
+        l4.text = [MyUtil formatMinute:workTime];
     }else{
         l2.text = @"--:--";
         l3.text = @"--:--";
-        l4.text = @"0";
-        l5.text = @"0";
+        l4.text = @"";
     }
 }
 

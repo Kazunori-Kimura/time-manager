@@ -88,7 +88,7 @@
         if(indexPath.row == 0){
             //昼休憩
             cell = self.cellLunchTime;
-            self.textLunchTime.text = [NSString stringWithFormat:@"%d", self.setting.lunchTime];
+            self.textLunchTime.text = [NSString stringWithFormat:@"%d", self.project.base_rest_time.integerValue];
         }else if(indexPath.row == 1){
             //勤務先
             cell = self.cellCompany;
@@ -196,12 +196,13 @@
 
 - (IBAction)saveSetting:(id)sender {
     //各フィールドの値を取得
-    self.setting.lunchTime = [self.textLunchTime.text integerValue];
+    //self.setting.lunchTime = [self.textLunchTime.text integerValue];
     self.setting.tel = self.textTel.text;
     self.setting.naisen = self.textNaisen.text;
     self.setting.yobidasi = self.textYobidasi.text;
     [SettingController saveUserDefaults:self.setting];
     
+    self.project.base_rest_time = [NSNumber numberWithInteger:[self.textLunchTime.text integerValue]];
     self.project.company_name = self.textCompany.text;
     self.project.workspace = self.textWorkplace.text;
     self.project.manager = self.textManager.text;
@@ -211,16 +212,5 @@
 -(void)onSingleTap:(UITapGestureRecognizer *)recognizer {
     [self.view endEditing:YES];
 }
-
-/*
-// メッセージ入力終了処理
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
- 　　// the user pressed the "Done" button, so dismiss the keyboard
- 　　// キーボードを非表示にする
- 　　[textField resignFirstResponder];
- 　　return YES;
-}
- */
 
 @end

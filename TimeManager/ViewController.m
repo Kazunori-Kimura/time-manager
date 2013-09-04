@@ -48,6 +48,8 @@
 {
     [super viewDidLoad];
 	
+    self.navigationController.delegate = self;
+    
     //今日日付取得
     self.today = [NSDate date];
     
@@ -74,12 +76,28 @@
     }
     
     //DailyReportを取得
+    self.dailyReport = nil;
+    [self updateLabelText];
+    
+    //共通設定取得
+    self.setting = [SettingController loadUserDefaults];
+}
+
+/**
+ * 出勤・退勤時間を取得
+ */
+-(void)updateLabelText
+{
+    //CoreData
+    self.dm = [[DataManager alloc] init];
+    //DailyReportを取得
     NSMutableArray *results = [self.dm getDailyReportByReportDate:self.report_date];
     if(results != nil && results.count > 0){
         self.dailyReport = (DailyReport *) results[0]; //キー項目なので一個だけのはず
         
         //出勤時間が設定されている？
         if(self.dailyReport.start_time != nil && self.dailyReport.start_time.integerValue > 0){
+            NSLog(@"start_time=%d", self.dailyReport.start_time.integerValue);
             labelStartTime.text = [MyUtil stringHourMinute:self.dailyReport.start_time];
             [buttonArrive setEnabled:NO];
         }
@@ -88,13 +106,9 @@
             labelEndTime.text = [MyUtil stringHourMinute:self.dailyReport.end_time];
             [buttonLeave setEnabled:NO];
         }
-    }else{
-        self.dailyReport = nil;
     }
-    
-    //共通設定取得
-    self.setting = [SettingController loadUserDefaults];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -121,8 +135,8 @@
     
     NSInteger st = [MyUtil convertMinute:self.dailyReport.start_time];
     NSInteger et = [MyUtil convertMinute:self.dailyReport.end_time];
-    if(self.setting.lunchTime < (et - st)){
-        self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+    if(self.project.base_rest_time.integerValue < (et - st)){
+        self.dailyReport.lunch_time = self.project.base_rest_time;
     }
     
     [self.dm saveData];
@@ -150,8 +164,8 @@
     // 作業時間より休憩時間が大きくなる場合は 0 とする
     NSInteger st = [MyUtil convertMinute:self.dailyReport.start_time];
     NSInteger et = [MyUtil convertMinute:self.dailyReport.end_time];
-    if(self.setting.lunchTime < (et - st)){
-        self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+    if(self.project.base_rest_time.integerValue < (et - st)){
+        self.dailyReport.lunch_time = self.project.base_rest_time;
     }
     
     [self.dm saveData];
@@ -162,6 +176,20 @@
     if([[segue identifier] isEqualToString:@"mainToDetailViewSeque"]) {
         DailyDetailViewController *view = [segue destinationViewController];
         view.today = self.today;
+    }
+}
+
+//NavigationController遷移処理
+
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    if ([viewController isEqual:self]) {
+        [self viewDidAppear:animated];
+        //出勤・退勤時間更新
+        [self updateLabelText];
+        NSLog(@"didShowViewController");
     }
 }
 @end

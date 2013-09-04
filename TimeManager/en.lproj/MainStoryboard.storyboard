@@ -159,7 +159,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="GaX-gb-kYw">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMT-Zt-c2B">
@@ -173,7 +173,7 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZO-HY-Jsm">
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="og6-Tg-ACH"/>
+                                        <constraint firstAttribute="width" constant="30" id="tMS-sz-RCN"/>
                                         <constraint firstAttribute="height" constant="31" id="w6q-Cd-Ma1"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
@@ -190,7 +190,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tr0-h8-ZiL">
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="ugE-WC-CQh"/>
+                                        <constraint firstAttribute="width" constant="30" id="Piw-mL-r5D"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                     <state key="normal" title=">">
@@ -204,23 +204,34 @@
                                         <action selector="tapNextMonth:" destination="dYa-NN-eay" eventType="touchUpInside" id="vOq-rm-MpV"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="日(曜日)      出勤      退勤        作業時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yI-sK-F7d">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="Gnt-hN-EPt"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="fZO-HY-Jsm" firstAttribute="centerY" secondItem="GaX-gb-kYw" secondAttribute="centerY" type="default" id="CrI-7y-zt9"/>
-                                <constraint firstItem="fZO-HY-Jsm" firstAttribute="centerY" secondItem="BMT-Zt-c2B" secondAttribute="centerY" type="default" id="FbM-4Z-d4B"/>
-                                <constraint firstItem="Tr0-h8-ZiL" firstAttribute="bottom" secondItem="fZO-HY-Jsm" secondAttribute="bottom" type="default" id="Nwu-xK-Uvo"/>
+                                <constraint firstItem="BMT-Zt-c2B" firstAttribute="baseline" secondItem="fZO-HY-Jsm" secondAttribute="baseline" type="default" id="3Yn-hX-7jW"/>
+                                <constraint firstItem="fZO-HY-Jsm" firstAttribute="top" secondItem="Tr0-h8-ZiL" secondAttribute="top" type="default" id="4vD-cb-bRn"/>
+                                <constraint firstItem="BMT-Zt-c2B" firstAttribute="top" secondItem="GaX-gb-kYw" secondAttribute="top" constant="18" id="MPg-qv-dXc"/>
+                                <constraint firstItem="5yI-sK-F7d" firstAttribute="top" secondItem="Tr0-h8-ZiL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="O6O-V7-MMJ"/>
                                 <constraint firstItem="BMT-Zt-c2B" firstAttribute="leading" secondItem="fZO-HY-Jsm" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="TJ6-tX-ys3"/>
-                                <constraint firstItem="fZO-HY-Jsm" firstAttribute="baseline" secondItem="BMT-Zt-c2B" secondAttribute="baseline" type="default" id="XLU-0a-G69"/>
+                                <constraint firstItem="5yI-sK-F7d" firstAttribute="leading" secondItem="GaX-gb-kYw" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="X3u-MW-WpU"/>
                                 <constraint firstItem="Tr0-h8-ZiL" firstAttribute="leading" secondItem="BMT-Zt-c2B" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="bq9-yE-Ih4"/>
-                                <constraint firstItem="Tr0-h8-ZiL" firstAttribute="top" secondItem="fZO-HY-Jsm" secondAttribute="top" type="default" id="cmh-UG-bMM"/>
+                                <constraint firstItem="fZO-HY-Jsm" firstAttribute="top" secondItem="GaX-gb-kYw" secondAttribute="top" constant="13" id="ccW-bm-Cca"/>
+                                <constraint firstItem="5yI-sK-F7d" firstAttribute="top" secondItem="fZO-HY-Jsm" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fd9-uA-D6x"/>
+                                <constraint firstItem="BMT-Zt-c2B" firstAttribute="baseline" secondItem="Tr0-h8-ZiL" secondAttribute="baseline" type="default" id="i3F-xm-WdJ"/>
                                 <constraint firstItem="fZO-HY-Jsm" firstAttribute="leading" secondItem="GaX-gb-kYw" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="kQy-2N-hry"/>
-                                <constraint firstItem="BMT-Zt-c2B" firstAttribute="baseline" secondItem="Tr0-h8-ZiL" secondAttribute="baseline" type="default" id="y9S-qx-RAX"/>
+                                <constraint firstAttribute="trailing" secondItem="5yI-sK-F7d" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mZF-kh-7Th"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellMonthReport" id="L44-Ez-Vve">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="102" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -228,6 +239,7 @@
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="DD (W)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlE-fs-AoJ">
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="E5h-gt-bxx"/>
                                                 <constraint firstAttribute="height" constant="21" id="MHL-0s-Yyt"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -252,17 +264,9 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="0分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-ws-Xg6">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="32" id="aEz-Cb-Mj3"/>
+                                                <constraint firstAttribute="width" constant="69" id="ie7-oO-1Nt"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="0分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L38-39-NUJ">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="34" id="ekH-56-HIA"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -270,21 +274,17 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="sVg-ws-Xg6" firstAttribute="bottom" secondItem="6TC-8Z-tfy" secondAttribute="bottom" type="default" id="0iF-vR-Z5T"/>
                                     <constraint firstItem="NlE-fs-AoJ" firstAttribute="leading" secondItem="L44-Ez-Vve" secondAttribute="leading" constant="20" type="default" id="5Qe-84-BkF"/>
                                     <constraint firstItem="NlE-fs-AoJ" firstAttribute="top" secondItem="L44-Ez-Vve" secondAttribute="top" constant="11" id="7Wt-Cn-XqQ"/>
                                     <constraint firstItem="GVq-nq-IdL" firstAttribute="baseline" secondItem="NlE-fs-AoJ" secondAttribute="baseline" type="default" id="7af-He-bRp"/>
-                                    <constraint firstItem="L38-39-NUJ" firstAttribute="top" secondItem="sVg-ws-Xg6" secondAttribute="top" type="default" id="9wt-wc-UAD"/>
-                                    <constraint firstItem="L38-39-NUJ" firstAttribute="baseline" secondItem="sVg-ws-Xg6" secondAttribute="baseline" type="default" id="FCa-QM-20r"/>
-                                    <constraint firstItem="L38-39-NUJ" firstAttribute="leading" secondItem="sVg-ws-Xg6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ib6-6P-C7h"/>
                                     <constraint firstItem="6TC-8Z-tfy" firstAttribute="top" secondItem="GVq-nq-IdL" secondAttribute="top" type="default" id="MUO-LO-2C2"/>
                                     <constraint firstItem="sVg-ws-Xg6" firstAttribute="leading" secondItem="6TC-8Z-tfy" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="UGD-8z-Hdk"/>
-                                    <constraint firstAttribute="trailing" secondItem="L38-39-NUJ" secondAttribute="trailing" constant="48" id="bT9-13-gIx"/>
                                     <constraint firstItem="GVq-nq-IdL" firstAttribute="top" secondItem="NlE-fs-AoJ" secondAttribute="top" type="default" id="gDd-yW-DPr"/>
                                     <constraint firstItem="sVg-ws-Xg6" firstAttribute="top" secondItem="6TC-8Z-tfy" secondAttribute="top" type="default" id="hRs-PT-3gV"/>
                                     <constraint firstItem="6TC-8Z-tfy" firstAttribute="leading" secondItem="GVq-nq-IdL" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="myH-xj-4bw"/>
                                     <constraint firstItem="6TC-8Z-tfy" firstAttribute="baseline" secondItem="GVq-nq-IdL" secondAttribute="baseline" type="default" id="p6h-su-3vB"/>
                                     <constraint firstItem="GVq-nq-IdL" firstAttribute="leading" secondItem="NlE-fs-AoJ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="wtk-Cw-tEZ"/>
-                                    <constraint firstItem="sVg-ws-Xg6" firstAttribute="baseline" secondItem="6TC-8Z-tfy" secondAttribute="baseline" type="default" id="ybY-TS-NGi"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="SJ7-oR-ePr" kind="push" identifier="monthlyToDetailViewSegue" trigger="accessoryAction" id="oHa-dU-9qA"/>
@@ -914,72 +914,6 @@
         <image name="button1-1.png" width="133" height="133"/>
         <image name="button2-1.png" width="133" height="133"/>
     </resources>
-    <classes>
-        <class className="DailyDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saveData:"/>
-                <relationship kind="outlet" name="cellDate" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellDetail" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellEndTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellLunchTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellRestTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellStartTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="labelValidateMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="textComment" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textEndTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textLunchTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textRestTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textStartTime" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MonthlyReportViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MonthlyReportViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="exportPdf:"/>
-                <relationship kind="action" name="tapNextMonth:"/>
-                <relationship kind="action" name="tapPrevMonth:"/>
-                <relationship kind="outlet" name="labelYearMonth" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ReportSettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReportSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saveSetting:"/>
-                <relationship kind="outlet" name="cellCompany" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellCustomer" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellLunchTime" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellTel" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellTel2" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellTel3" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellUserName" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellWorkspace" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="textCompany" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textLunchTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textManager" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textNaisen" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textTel" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textUserName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textWorkplace" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textYobidasi" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="tapArrive:"/>
-                <relationship kind="action" name="tapLeave:"/>
-                <relationship kind="outlet" name="buttonArrive" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonLeave" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="labelEndTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelStartTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelToday" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
