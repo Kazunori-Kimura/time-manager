@@ -51,6 +51,9 @@
     self.singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:self.singleTap];
     
+    //メッセージ非表示
+    self.labelValidateMessage.hidden = YES;
+    
     //日付取得
     self.report_date = [MyUtil numberFromDate:self.today];
     NSLog(@"%d", self.report_date);
@@ -294,7 +297,10 @@
         msg = @"昼以外の休憩に誤りがあります。";
     }
     
-    self.labelValidateMessage.text = msg;
+    if(ret == NO){
+        [self showMessage:msg success:ret];
+    }
+    
     return ret;
 }
 
@@ -326,10 +332,38 @@
         [self updateDailyReport];
         //CoreData保存
         [self.dataManager saveData];
-        
-        self.labelValidateMessage.textColor = [UIColor greenColor];
-        self.labelValidateMessage.text = @"保存しました。";
+        //メッセージ表示
+        [self showMessage:@"保存しました。" success:YES];
     }
+}
+
+//メッセージ表示
+-(void)showMessage:(NSString *)message success:(BOOL)success
+{
+    //color: http://www.sirochro.com/note/objc-uicolor-rgb/
+    if(success){
+        self.labelValidateMessage.backgroundColor = [UIColor colorWithRed:0.235
+                                                                    green:0.702
+                                                                     blue:0.443
+                                                                    alpha:0.8];
+        self.labelValidateMessage.textColor = [UIColor colorWithRed:0
+                                                              green:0.392
+                                                               blue:0
+                                                              alpha:1];
+    }else{
+        //error
+        self.labelValidateMessage.backgroundColor = [UIColor colorWithRed:0.804
+                                                                    green:0.361
+                                                                     blue:0.361
+                                                                    alpha:0.8];
+        self.labelValidateMessage.textColor = [UIColor colorWithRed:0.545
+                                                              green:0
+                                                               blue:0
+                                                              alpha:1];
+    }
+    
+    self.labelValidateMessage.text = message;
+    self.labelValidateMessage.hidden = NO;
 }
 
 //タップ時の処理

@@ -73,6 +73,7 @@
         self.project = (Project *)pa[0];
     }else{
         self.project = [self.dm createProject];
+        self.project.project_id = [NSNumber numberWithInteger:1];
     }
     
     //DailyReportを取得

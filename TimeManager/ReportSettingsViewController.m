@@ -11,6 +11,7 @@
 #import "SettingController.h"
 #import "DataManager.h"
 #import "Project.h"
+#import "MyUtil.h"
 
 @interface ReportSettingsViewController ()
 
@@ -35,7 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    self.labelValidateMessage.hidden = YES;
+    
     //UserDefaults取得
     self.setting = [SettingController loadUserDefaults];
     //Project取得
@@ -45,6 +48,7 @@
         self.project = (Project *)arr[0];
     }else{
         self.project = [self.dataManager createProject];
+        self.project.project_id = [NSNumber numberWithInteger:1];
     }
     
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
@@ -194,21 +198,75 @@
      */
 }
 
-- (IBAction)saveSetting:(id)sender {
-    //各フィールドの値を取得
-    //self.setting.lunchTime = [self.textLunchTime.text integerValue];
-    self.setting.tel = self.textTel.text;
-    self.setting.naisen = self.textNaisen.text;
-    self.setting.yobidasi = self.textYobidasi.text;
-    [SettingController saveUserDefaults:self.setting];
+//昼休憩が数字かをチェック
+- (BOOL)validateInputData
+{
+    BOOL ret = YES;
+    NSString *msg;
+    if(![MyUtil validateString:self.textLunchTime.text withPattern:@"^[0-9]+$"]){
+        ret = NO;
+        msg = @"昼休憩に誤りがあります。";
+    }
     
-    self.project.base_rest_time = [NSNumber numberWithInteger:[self.textLunchTime.text integerValue]];
-    self.project.company_name = self.textCompany.text;
-    self.project.workspace = self.textWorkplace.text;
-    self.project.manager = self.textManager.text;
-    [self.dataManager saveData];
+    if(!ret){
+        [self showMessage:msg success:ret];
+    }
+    
+    return ret;
 }
 
+- (IBAction)saveSetting:(id)sender {
+    if([self validateInputData]){
+        //各フィールドの値を取得
+        //self.setting.lunchTime = [self.textLunchTime.text integerValue];
+        self.setting.tel = self.textTel.text;
+        self.setting.naisen = self.textNaisen.text;
+        self.setting.yobidasi = self.textYobidasi.text;
+        //保存
+        [SettingController saveUserDefaults:self.setting];
+    
+        self.project.base_rest_time = [NSNumber numberWithInteger:[self.textLunchTime.text integerValue]];
+        self.project.company_name = self.textCompany.text;
+        self.project.workspace = self.textWorkplace.text;
+        self.project.manager = self.textManager.text;
+        //保存
+        [self.dataManager saveData];
+    
+        //メッセージ表示
+        [self showMessage:@"保存しました。" success:YES];
+    }
+}
+
+//メッセージ表示
+-(void)showMessage:(NSString *)message success:(BOOL)success
+{
+    //color: http://www.sirochro.com/note/objc-uicolor-rgb/
+    if(success){
+        self.labelValidateMessage.backgroundColor = [UIColor colorWithRed:0.235
+                                                                    green:0.702
+                                                                     blue:0.443
+                                                                    alpha:0.8];
+        self.labelValidateMessage.textColor = [UIColor colorWithRed:0
+                                                              green:0.392
+                                                               blue:0
+                                                              alpha:1];
+    }else{
+        //error
+        self.labelValidateMessage.backgroundColor = [UIColor colorWithRed:0.804
+                                                                    green:0.361
+                                                                     blue:0.361
+                                                                    alpha:0.8];
+        self.labelValidateMessage.textColor = [UIColor colorWithRed:0.545
+                                                              green:0
+                                                               blue:0
+                                                              alpha:1];
+    }
+    
+    self.labelValidateMessage.text = message;
+    self.labelValidateMessage.hidden = NO;
+}
+
+//タップしたらキーボード閉じる
 -(void)onSingleTap:(UITapGestureRecognizer *)recognizer {
     [self.view endEditing:YES];
 }

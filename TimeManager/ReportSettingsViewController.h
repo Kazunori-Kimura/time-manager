@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textTel;
 @property (weak, nonatomic) IBOutlet UITextField *textNaisen;
 @property (weak, nonatomic) IBOutlet UITextField *textYobidasi;
+@property (weak, nonatomic) IBOutlet UILabel *labelValidateMessage;
 
 - (IBAction)saveSetting:(id)sender;
 

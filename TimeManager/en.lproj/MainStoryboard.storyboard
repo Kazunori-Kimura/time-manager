@@ -322,6 +322,23 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="uZp-NE-fmH">
+                            <rect key="frame" x="0.0" y="458" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9w-3j-FId">
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="m9w-3j-FId" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="A21-xe-gaW"/>
+                                <constraint firstItem="m9w-3j-FId" firstAttribute="top" secondItem="uZp-NE-fmH" secondAttribute="top" constant="11" id="GnF-S6-rME"/>
+                                <constraint firstItem="m9w-3j-FId" firstAttribute="leading" secondItem="uZp-NE-fmH" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="JMK-T1-dbL"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="プロジェクト情報" id="S5D-gd-QMN">
                                 <cells>
@@ -624,6 +641,7 @@
                         <outlet property="cellTel3" destination="4BZ-be-Jhf" id="9r9-br-eOU"/>
                         <outlet property="cellUserName" destination="On0-Hg-lkb" id="GwX-YK-6Ct"/>
                         <outlet property="cellWorkspace" destination="zqt-oa-ae5" id="Rjw-yp-KP5"/>
+                        <outlet property="labelValidateMessage" destination="m9w-3j-FId" id="ZmC-sS-NMB"/>
                         <outlet property="textCompany" destination="85x-PU-zTC" id="xrC-wo-WiQ"/>
                         <outlet property="textLunchTime" destination="MnC-PT-7o7" id="Qef-Pi-QKr"/>
                         <outlet property="textManager" destination="DkQ-As-KDb" id="T6V-oT-ss6"/>
@@ -650,11 +668,8 @@
                             <rect key="frame" x="0.0" y="308" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scG-4q-6j0">
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="Ih7-ub-ATg"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scG-4q-6j0">
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
