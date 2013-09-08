@@ -21,6 +21,7 @@
 - (NSMutableArray *) getDailyReport:(NSPredicate *)predicate;
 - (NSMutableArray *) getDailyReport:(NSPredicate *)predicate sort:(NSSortDescriptor *)sort;
 - (id) createDailyReport;
+- (id) createDailyReport:(NSNumber *)reportDate projectId:(NSNumber *)projectId;
 
 //report
 - (NSMutableArray *) getReportById:(NSInteger)reportId;

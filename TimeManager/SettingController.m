@@ -59,6 +59,12 @@
     //NSUserDefaultsを取得
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
+    //初期値設定
+    NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
+    [defaults setObject:@"NO" forKey:@"Enabled"];
+    [defaults setObject:@"http://localhost:3000/" forKey:@"ServerUrl"];
+    [ud registerDefaults:defaults];
+    
     Setting *st = [[Setting alloc] init];
     st.partnerId = [ud stringForKey:@"PartnerID"];
     st.partnerName = [ud stringForKey:@"UserName"];
@@ -70,7 +76,7 @@
     st.url = [ud stringForKey:@"ServerUrl"];
     st.canUpload = [ud boolForKey:@"Enabled"];
     
-    NSLog(@"%@ %@", st.partnerId, st.url);
+    //NSLog(@"%@ %@", st.partnerId, st.url);
     
     return st;
 }

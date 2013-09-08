@@ -128,9 +128,8 @@
     [buttonArrive setEnabled:NO];
     
     if(self.dailyReport == nil){
-        self.dailyReport = [self.dm createDailyReport];
-        self.dailyReport.report_date = [NSNumber numberWithInt:self.report_date];
-        //self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+        self.dailyReport = [self.dm createDailyReport:[NSNumber numberWithInt:self.report_date]
+                                            projectId:[NSNumber numberWithInteger:1]];
     }
     self.dailyReport.start_time = [NSNumber numberWithInt:comp.hour * 100 + comp.minute];
     
@@ -154,9 +153,8 @@
     [buttonLeave setEnabled:NO];
     
     if(self.dailyReport == nil){
-        self.dailyReport = [self.dm createDailyReport];
-        self.dailyReport.report_date = [NSNumber numberWithInt:self.report_date];
-        //self.dailyReport.lunch_time = [NSNumber numberWithInt:self.setting.lunchTime];
+        self.dailyReport = [self.dm createDailyReport:[NSNumber numberWithInt:self.report_date]
+                                            projectId:[NSNumber numberWithInteger:1]];
     }
     self.dailyReport.end_time = [NSNumber numberWithInt:comp.hour * 100 + comp.minute];
     

@@ -104,12 +104,26 @@
 
 /**
  * 新しいDailyReportを作成する (insert)
- * @return NSManagedObject
+ * @return NSManagedObject (DailyReport)
  */
 - (id) createDailyReport
 {
     NSString *tableName = @"DailyReport";
     return [self insertNewObject:tableName];
+}
+
+/**
+ * 新しいDailyReportを作成する (Insert)
+ * @param NSNumber reportDate
+ * @param NSNumber projectId
+ * @return NSManagedObject (DailyReport)
+ */
+-(id) createDailyReport:(NSNumber *)reportDate projectId:(NSNumber *)projectId
+{
+    DailyReport *dr = [self createDailyReport];
+    dr.report_date = reportDate;
+    dr.project_id = projectId;
+    return dr;
 }
 
 
@@ -353,7 +367,8 @@
                     forKey:@"start_time"];
             [prm setObject:[self convertNumber:dailryReport.end_time]
                     forKey:@"end_time"];
-            [prm setObject:[self convertNumber:dailryReport.rest_time]
+            //休憩時間を合計する
+            [prm setObject:[self addLunchTime:dailryReport.lunch_time restTime:dailryReport.rest_time]
                     forKey:@"rest_time"];
             [prm setObject:[self convertString:dailryReport.detail]
                     forKey:@"detail"];
@@ -490,6 +505,16 @@
     }
     
     return ret;
+}
+
+/**
+ * 休憩時間合計
+ */
+- (NSNumber *)addLunchTime:(NSNumber *)lunch restTime:(NSNumber *)rest
+{
+    NSInteger val = [[self convertNumber:lunch] integerValue] +
+        [[self convertNumber:rest] integerValue];
+    return [NSNumber numberWithInteger:val];
 }
 
 @end

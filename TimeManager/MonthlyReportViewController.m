@@ -122,7 +122,9 @@
         //work_time
         NSInteger workTime = [MyUtil diffTime:dr.start_time endTime:dr.end_time
                                     lunchTime:dr.lunch_time restTime:dr.rest_time];
-        l4.text = [MyUtil formatMinute:workTime];
+        if(workTime > 0){
+            l4.text = [MyUtil formatMinute:workTime];
+        }
     }else{
         l2.text = @"--:--";
         l3.text = @"--:--";
