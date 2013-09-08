@@ -3,13 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>ja_JP</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon</string>
+		<string>Icon-72</string>
+		<string>Icon-Small</string>
+		<string>Icon-Small-50</string>
+	</array>
 	<key>CFBundleIdentifier</key>
-	<string>io.github.kazunori-kimura.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.kazunori-kimura.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -29,13 +36,6 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
-	</array>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Icon</string>
-		<string>Icon-72</string>
-		<string>Icon-Small</string>
-		<string>Icon-Small-50</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

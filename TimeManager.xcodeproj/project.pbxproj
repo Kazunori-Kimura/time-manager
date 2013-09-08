@@ -18,13 +18,11 @@
 		0B0D0B0B17DCB45000E82B71 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B0D0B0817DCB45000E82B71 /* Default-568h@2x.png */; };
 		0B0D0B0C17DCB45000E82B71 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B0D0B0917DCB45000E82B71 /* Default@2x.png */; };
 		0B0D0B0D17DCB45000E82B71 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B0D0B0A17DCB45000E82B71 /* Default.png */; };
-		0B2FDAF717C7AF1500AB59CB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B2FDAF617C7AF1500AB59CB /* Settings.bundle */; };
 		0B559DC017C62FCB0098D9C5 /* MyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DBF17C62FCB0098D9C5 /* MyUtil.m */; };
 		0B559DC317C637F40098D9C5 /* PdfWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DC217C637F40098D9C5 /* PdfWriter.m */; };
 		0B559DC517C638380098D9C5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B559DC417C638380098D9C5 /* CoreText.framework */; };
 		0B559DCC17C643970098D9C5 /* DSJSONRPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DC917C643970098D9C5 /* DSJSONRPC.m */; };
 		0B559DCD17C643970098D9C5 /* DSJSONRPCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DCB17C643970098D9C5 /* DSJSONRPCError.m */; };
-		0B559DCF17C643B40098D9C5 /* pdf_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B559DCE17C643B40098D9C5 /* pdf_back.png */; };
 		0B559DD217C6471D0098D9C5 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DD117C6471D0098D9C5 /* Setting.m */; };
 		0B559DD517C6480E0098D9C5 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B559DD417C6480E0098D9C5 /* SettingController.m */; };
 		0B8C12A217C4F32B0067B140 /* MonthlyReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C12A117C4F32B0067B140 /* MonthlyReportViewController.m */; };
@@ -62,7 +60,6 @@
 		0B0D0B0817DCB45000E82B71 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0B0D0B0917DCB45000E82B71 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0B0D0B0A17DCB45000E82B71 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		0B2FDAF617C7AF1500AB59CB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0B559DBE17C62FCB0098D9C5 /* MyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUtil.h; sourceTree = "<group>"; };
 		0B559DBF17C62FCB0098D9C5 /* MyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUtil.m; sourceTree = "<group>"; };
 		0B559DC117C637F40098D9C5 /* PdfWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdfWriter.h; sourceTree = "<group>"; };
@@ -73,7 +70,6 @@
 		0B559DC917C643970098D9C5 /* DSJSONRPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJSONRPC.m; sourceTree = "<group>"; };
 		0B559DCA17C643970098D9C5 /* DSJSONRPCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSJSONRPCError.h; sourceTree = "<group>"; };
 		0B559DCB17C643970098D9C5 /* DSJSONRPCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJSONRPCError.m; sourceTree = "<group>"; };
-		0B559DCE17C643B40098D9C5 /* pdf_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pdf_back.png; sourceTree = "<group>"; };
 		0B559DD017C6471D0098D9C5 /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Setting.h; path = TimeManager/Setting.h; sourceTree = SOURCE_ROOT; };
 		0B559DD117C6471D0098D9C5 /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Setting.m; path = TimeManager/Setting.m; sourceTree = SOURCE_ROOT; };
 		0B559DD317C6480E0098D9C5 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
@@ -175,7 +171,6 @@
 			children = (
 				0B559DC617C643970098D9C5 /* DSJSONRPC */,
 				0BF031A117C251DC005CF446 /* Model.xcdatamodeld */,
-				0B2FDAF617C7AF1500AB59CB /* Settings.bundle */,
 				0B559DD017C6471D0098D9C5 /* Setting.h */,
 				0B559DD117C6471D0098D9C5 /* Setting.m */,
 				0B559DD317C6480E0098D9C5 /* SettingController.h */,
@@ -226,7 +221,6 @@
 				0BA0684D17B7B54100F9CBE3 /* button1-2.png */,
 				0BA0684E17B7B54100F9CBE3 /* button2-1.png */,
 				0BA0684F17B7B54100F9CBE3 /* button2-2.png */,
-				0B559DCE17C643B40098D9C5 /* pdf_back.png */,
 				0BA0683117B7B48B00F9CBE3 /* TimeManager-Info.plist */,
 				0BA0683217B7B48B00F9CBE3 /* InfoPlist.strings */,
 				0BA0683517B7B48B00F9CBE3 /* main.m */,
@@ -292,8 +286,6 @@
 				0BA0685117B7B54100F9CBE3 /* button1-2.png in Resources */,
 				0BA0685217B7B54100F9CBE3 /* button2-1.png in Resources */,
 				0BA0685317B7B54100F9CBE3 /* button2-2.png in Resources */,
-				0B559DCF17C643B40098D9C5 /* pdf_back.png in Resources */,
-				0B2FDAF717C7AF1500AB59CB /* Settings.bundle in Resources */,
 				0B0D0B0017DCB24200E82B71 /* Icon-Small-50@2x.png in Resources */,
 				0B0D0B0117DCB24200E82B71 /* Icon-Small-50.png in Resources */,
 				0B0D0B0217DCB24200E82B71 /* Icon-Small@2x.png in Resources */,
@@ -369,7 +361,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kazunori Kimura (J58NLYJ4VJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kazunori Kimura (J58NLYJ4VJ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -384,6 +377,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "40F6B989-B799-4F62-96D8-9BF0196E12DC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "40F6B989-B799-4F62-96D8-9BF0196E12DC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -400,7 +395,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kazunori Kimura (J58NLYJ4VJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kazunori Kimura (J58NLYJ4VJ)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -408,6 +404,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "40F6B989-B799-4F62-96D8-9BF0196E12DC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "40F6B989-B799-4F62-96D8-9BF0196E12DC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

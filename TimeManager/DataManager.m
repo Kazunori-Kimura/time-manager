@@ -46,7 +46,7 @@
 {
     NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Model" ofType:@"momd"]];
     NSString *documents = [self applicationDocumentsDirectory];
-    NSURL *storeURL = [NSURL fileURLWithPath:[documents stringByAppendingString:@"data.sqlite"]];
+    NSURL *storeURL = [NSURL fileURLWithPath:[documents stringByAppendingPathComponent:@"data.sqlite"]];
     
     NSManagedObjectModel *model;
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -57,7 +57,11 @@
     
     // NSPersistentStoreCoordinator をインスタンス化
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                  configuration:nil
+                                                            URL:storeURL
+                                                        options:nil
+                                                          error:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
