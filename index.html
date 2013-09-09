@@ -27,45 +27,91 @@
     <!-- Wrap all page content here -->
     <div id="wrap">
 
-      <!-- Fixed navbar -->
-      <nav id="topbar" class="navbar navbar-default navbar-fixed-top">
+        <!-- Fixed navbar -->
+        <nav id="topbar" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">勤怠管理表</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">概要</a></li>
+                        <li><a href="#about">アプリについて</a></li>
+                        <li><a href="#project-page">Github</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <!-- Begin page content -->
         <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">勤怠管理表</a>
-          </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">概要</a></li>
-              <li><a href="#about">アプリについて</a></li>
-              <li><a href="#github">Github</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </nav>
+            <div class="page-header">
+                <h1>
+                    勤怠管理表
+                    <small>スマートフォンで簡単勤怠管理</small>
+                </h1>
+            </div>
+            <p class="lead">毎日の出勤・退勤時間入力を簡易化し、面倒な勤怠管理表の作成をサポートします。</p>
 
-      <!-- Begin page content -->
-      <div class="container">
-        <div class="page-header">
-          <h1>Sticky footer with fixed navbar</h1>
-        </div>
-        <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
-        <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
+            <h2>簡単入力</h2>
+            <p>出勤・退勤時にボタンをタップするだけで、時間を記録できます。</p>
 
-          <div class="page-header">
-            <h2 id="about">アプリについて</h2>
-          </div>
-      </div> <!--/.container-->
-    </div>
+            <h2>月次報告書の作成</h2>
+            <p>PDF出力機能により、毎月の報告書作成の手間を削減します。</p>
+
+            <div class="page-header">
+                <h2 id="about">アプリについて</h2>
+            </div>
+
+
+            <div class="page-header">
+                <h3 id="project-page"></h3>
+            </div>
+
+            <p>ソースコードは全て <a href="https://github.com/Kazunori-Kimura/time-manager">GitHub</a> にて管理しています。</p>
+            <p>バグ・要望等のご報告はGitHubのプロジェクトページにお願いいたします。</p>
+
+
+            <div class="page-header">
+                <h3 id="license">ライセンスについて</h3>
+            </div>
+
+            <h4>The MIT License (MIT)</h4>
+<pre>
+Copyright (c) 2013 kimura.kazunori
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</pre>
+
+        </div> <!--/.container-->
+    </div> <!--/#wrap-->
 
     <div id="footer">
-      <div class="container">
-          <p>kazunori.kimura</p>
-      </div>
+        <div class="container">
+            <p>kazunori.kimura</p>
+        </div>
     </div>
 
     <!-- jQuery -->
